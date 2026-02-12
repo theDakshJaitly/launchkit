@@ -2,8 +2,8 @@
 
 import {
   Hero,
-  MetricsBar,
   Features,
+  Templates,
   HowItWorks,
   Pricing,
   FAQ,
@@ -15,6 +15,7 @@ import { VerticalDial } from "@/components/ui";
 const dialSections = [
   { id: "hero", label: "Intro" },
   { id: "features", label: "Features" },
+  { id: "templates", label: "Templates" },
   { id: "how-it-works", label: "How it works" },
   { id: "pricing", label: "Pricing" },
   { id: "faq", label: "FAQ" },
@@ -43,10 +44,8 @@ export default function Home() {
       </div>
 
       <Hero />
-      <MetricsBar />
-      <div id="features">
-        <Features />
-      </div>
+      <Features />
+      <Templates />
       <div id="how-it-works">
         <HowItWorks />
       </div>

@@ -1,127 +1,119 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui";
+import { Button } from "@/components/ui/Button";
+import { Check } from "lucide-react";
 
 const ease: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
-const pricingTiers = [
-  {
-    name: "Starter",
-    price: 149,
-    originalPrice: 199,
-    features: [
-      "Any 3 templates",
-      "All features included",
-      "Discord community access",
-      "1 year of updates",
-    ],
-    popular: false,
-  },
-  {
-    name: "All-In",
-    price: 199,
-    originalPrice: 299,
-    features: [
-      "All 5 templates",
-      "Priority support",
-      "Early access to new templates",
-      "Lifetime updates",
-    ],
-    popular: true,
-  },
-];
-
 export function Pricing() {
   return (
-    <section id="pricing" className="py-32">
-      <div className="max-w-4xl mx-auto px-6 md:px-12 lg:px-20">
-        {/* Header */}
+    <section id="pricing" className="py-32 relative">
+      <div className="max-w-4xl mx-auto px-6 md:px-12 lg:px-20 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease }}
-          className="mb-20"
+          className="mb-20 text-center md:text-left"
         >
-          <h2 className="text-section mb-4">Simple pricing</h2>
-          <p className="text-zinc-500 max-w-md text-[15px]">
-            One payment. Unlimited projects. No subscriptions.
+          <h2 className="text-section mb-4">Simple, transparent pricing.</h2>
+          <p className="text-zinc-500 max-w-lg text-[15px]">
+            Pay once, build forever. No monthly fees or hidden costs.
+            Get 50% off during our early access period.
           </p>
         </motion.div>
 
-        {/* Pricing cards */}
-        <div className="grid md:grid-cols-2 gap-6">
-          {pricingTiers.map((tier, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, ease, delay: i * 0.08 }}
-              className={`rounded-2xl p-8 md:p-10 transition-all duration-300 ${tier.popular
-                ? "bg-white/[0.04] border border-white/[0.15] shadow-[0_0_40px_rgba(255,255,255,0.04)]"
-                : "bg-white/[0.02] border border-white/[0.06] hover:bg-white/[0.03]"
-                }`}
-            >
-              {tier.popular && (
-                <span className="inline-block text-[11px] font-medium tracking-widest text-zinc-400 uppercase mb-5">
-                  Most popular
-                </span>
-              )}
+        <div className="grid md:grid-cols-2 gap-8 items-start">
+          {/* Option 1: Single Template */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease, delay: 0.1 }}
+            className="rounded-2xl bg-white/[0.02] border border-white/[0.06] p-8 hover:bg-white/[0.03] transition-all duration-300"
+          >
+            <h3 className="text-lg font-medium text-white mb-2">Single Template</h3>
+            <p className="text-zinc-500 text-[13px] mb-6">
+              Perfect if you just need one specific starter kit.
+            </p>
 
-              <h3 className="text-xl font-medium tracking-tight mb-5 text-white">
-                {tier.name}
-              </h3>
+            <div className="flex items-baseline gap-2 mb-8">
+              <span className="text-zinc-500 text-[15px]">from</span>
+              <span className="text-4xl font-medium text-white">$49</span>
+              <span className="text-zinc-600 line-through text-sm">$99</span>
+            </div>
 
-              <div className="mb-8">
-                <span className="text-4xl font-medium tracking-tight text-white">
-                  ${tier.price}
-                </span>
-                <span className="text-zinc-600 line-through ml-3 text-sm">
-                  ${tier.originalPrice}
-                </span>
-              </div>
+            <ul className="space-y-4 mb-8">
+              {[
+                "One template of your choice",
+                "Full source code ownership",
+                "Lifetime updates",
+                "Community access",
+                "Commercial license",
+              ].map((feature, i) => (
+                <li key={i} className="flex items-center gap-3 text-[14px] text-zinc-400">
+                  <Check className="w-4 h-4 text-emerald-500" />
+                  {feature}
+                </li>
+              ))}
+            </ul>
 
-              <ul className="space-y-3 mb-10">
-                {tier.features.map((feature, fi) => (
-                  <li
-                    key={fi}
-                    className="flex items-center gap-3 text-[14px] text-zinc-400"
-                  >
-                    <span className="w-4 h-4 rounded-full bg-white/[0.06] flex items-center justify-center flex-shrink-0">
-                      <span className="text-[10px] text-zinc-300">✓</span>
-                    </span>
-                    {feature}
-                  </li>
-                ))}
-              </ul>
+            <a href="/waitlist" className="block">
+              <button className="w-full py-3 rounded-xl bg-white/[0.06] border border-white/[0.08] text-[14px] text-zinc-300 font-medium hover:bg-white/[0.1] hover:border-white/[0.15] hover:text-white transition-all duration-200">
+                Join waitlist
+              </button>
+            </a>
+          </motion.div>
 
-              <a href="/waitlist" className="block">
-                <Button
-                  variant={tier.popular ? "primary" : "outline"}
-                  className="w-full rounded-full"
-                >
-                  Join Waitlist
-                </Button>
-              </a>
-            </motion.div>
-          ))}
+          {/* Option 2: All-Access Bundle */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease, delay: 0.2 }}
+            className="rounded-2xl bg-white/[0.04] border border-emerald-500/30 p-8 shadow-[0_0_50px_-20px_rgba(16,185,129,0.15)] relative overflow-hidden group"
+          >
+            <div className="absolute top-0 right-0 p-4">
+              <span className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-400 font-medium uppercase tracking-wider">
+                Best Value
+              </span>
+            </div>
+
+            <h3 className="text-lg font-medium text-white mb-2">All-Access Bundle</h3>
+            <p className="text-zinc-400 text-[13px] mb-6">
+              Get everything we've built and will build.
+            </p>
+
+            <div className="flex items-baseline gap-2 mb-8">
+              <span className="text-4xl font-medium text-white">$149</span>
+              <span className="text-zinc-600 line-through text-lg">$299</span>
+            </div>
+
+            <ul className="space-y-4 mb-8">
+              {[
+                "All 5 current templates",
+                "Future templates included free",
+                "Prioritized for feature requests",
+                "Priority email support",
+                "Unlimited projects",
+              ].map((feature, i) => (
+                <li key={i} className="flex items-center gap-3 text-[14px] text-zinc-300">
+                  <div className="w-4 h-4 rounded-full bg-emerald-500/20 flex items-center justify-center">
+                    <Check className="w-2.5 h-2.5 text-emerald-500" />
+                  </div>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+
+            <a href="/waitlist" className="block">
+              <button className="w-full py-3 rounded-xl bg-white text-black text-[14px] font-medium hover:bg-zinc-200 transition-all duration-200">
+                Get early access
+              </button>
+            </a>
+          </motion.div>
         </div>
-
-        {/* Supporting text */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease, delay: 0.2 }}
-          className="mt-10 text-center"
-        >
-          <p className="text-[13px] text-zinc-600">
-            No payment today. We&apos;ll email you when we launch with your
-            discount code.
-          </p>
-        </motion.div>
       </div>
     </section>
   );

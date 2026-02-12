@@ -65,7 +65,7 @@ export const AnimatedSpan = ({
       ref={elementRef}
       initial={{ opacity: 0, y: -5 }}
       animate={shouldAnimate ? { opacity: 1, y: 0 } : { opacity: 0, y: -5 }}
-      transition={{ duration: 0.3, delay: sequence ? 0 : delay / 1000 }}
+      transition={{ duration: 0.5, delay: sequence ? 0 : delay / 1000 }}
       className={cn("grid text-sm font-normal tracking-tight", className)}
       onAnimationComplete={() => {
         if (!sequence) return
@@ -91,7 +91,7 @@ interface TypingAnimationProps extends MotionProps {
 export const TypingAnimation = ({
   children,
   className,
-  duration = 60,
+  duration = 80,
   delay = 0,
   as: Component = "span",
   startOnView = true,
@@ -195,6 +195,7 @@ export const Terminal = ({
   startOnView = true,
 }: TerminalProps) => {
   const containerRef = useRef<HTMLDivElement | null>(null)
+  const scrollRef = useRef<HTMLPreElement | null>(null)
   const isInView = useInView(containerRef as React.RefObject<Element>, {
     amount: 0.3,
     once: true,
@@ -213,6 +214,22 @@ export const Terminal = ({
       sequenceStarted: sequenceHasStarted,
     }
   }, [sequence, activeIndex, sequenceHasStarted])
+
+  // Auto-scroll within the terminal only as new items appear
+  useEffect(() => {
+    const pre = scrollRef.current
+    if (!pre) return
+    const code = pre.querySelector('code')
+    const child = code?.children[activeIndex] as HTMLElement | undefined
+    if (child) {
+      const preRect = pre.getBoundingClientRect()
+      const childRect = child.getBoundingClientRect()
+      // If the child's bottom is below the pre's visible bottom, scroll down
+      if (childRect.bottom > preRect.bottom) {
+        pre.scrollTop += (childRect.bottom - preRect.bottom) + 8
+      }
+    }
+  }, [activeIndex])
 
   const wrappedChildren = useMemo(() => {
     if (!sequence) return children
@@ -239,8 +256,8 @@ export const Terminal = ({
           <div className="h-2 w-2 rounded-full bg-green-500"></div>
         </div>
       </div>
-      <pre className="p-4">
-        <code className="grid gap-y-1 overflow-auto">{wrappedChildren}</code>
+      <pre ref={scrollRef} className="p-4 overflow-y-auto" style={{ maxHeight: 'calc(100% - 44px)' }}>
+        <code className="grid gap-y-1">{wrappedChildren}</code>
       </pre>
     </div>
   )
