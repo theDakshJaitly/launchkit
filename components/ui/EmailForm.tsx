@@ -22,7 +22,7 @@ export function EmailForm({
     if (!email) return;
 
     setStatus("loading");
-    
+
     // Simulate API call - replace with actual API
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -60,8 +60,8 @@ export function EmailForm({
       />
       <Button
         type="submit"
-        variant="primary"
-        size={size}
+        variant="default"
+        size={size === "large" ? "lg" : "default"}
         disabled={status === "loading"}
       >
         {status === "loading" ? "..." : "Get early access"}

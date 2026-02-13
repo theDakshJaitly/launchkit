@@ -34,7 +34,7 @@ export function FinalCTA() {
           className="flex flex-col items-center"
         >
           <a href="/waitlist">
-            <Button variant="primary" className="text-[15px] px-10 py-3 rounded-full mb-4">
+            <Button variant="default" className="text-[15px] px-10 py-3 rounded-full mb-4">
               Join the waitlist
             </Button>
           </a>
