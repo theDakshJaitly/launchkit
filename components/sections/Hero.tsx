@@ -40,8 +40,8 @@ export function Hero() {
           transition={{ duration: 0.5, ease }}
           className="mb-8"
         >
-          <span className="text-[15px] font-medium tracking-tight text-white">
-            LaunchKit
+          <span className="text-xl font-bold tracking-tight text-white flex items-center gap-0.5 font-space">
+            Launch<span className="text-emerald-400">X</span>
           </span>
         </motion.div>
 
@@ -128,10 +128,10 @@ export function Hero() {
               transition={{ duration: 0.7, ease, delay: 0.4 }}
             >
               <Terminal className="w-full">
-                <TypingAnimation>&gt; npx launchkit-setup</TypingAnimation>
+                <TypingAnimation>&gt; npx launchx-setup</TypingAnimation>
 
                 <AnimatedSpan className="text-zinc-400">
-                  ◌ Initializing LaunchKit...
+                  ◌ Initializing LaunchX...
                 </AnimatedSpan>
 
                 <AnimatedSpan className="text-green-500">

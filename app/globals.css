@@ -57,12 +57,14 @@
   --radius-3xl: calc(var(--radius) + 12px);
   --radius-4xl: calc(var(--radius) + 16px);
   --animate-line-shadow: line-shadow 15s linear infinite;
+
   @keyframes line-shadow {
-  0% {
-    background-position: 0 0;
+    0% {
+      background-position: 0 0;
     }
-  100% {
-    background-position: 100% -100%;
+
+    100% {
+      background-position: 100% -100%;
     }
   }
 }
@@ -179,6 +181,12 @@ body {
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer utilities {
+  .font-space {
+    font-family: var(--font-space), system-ui, sans-serif;
+  }
 }
 
 @layer base {

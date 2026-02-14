@@ -5,7 +5,7 @@ export function Footer() {
 
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
         <p className="text-[13px] text-zinc-600">
-          © 2026 LaunchKit. Built for developers who ship.
+          © 2026 LaunchX. Built for developers who ship.
         </p>
         <div className="flex gap-8">
           <a

@@ -241,7 +241,7 @@ export function Features() {
                             One-command setup
                         </h3>
                         <p className="text-zinc-400 text-[16px] leading-relaxed mb-6 max-w-md">
-                            Run npx cursorkit-setup — it auto-configures environment
+                            Run npx launchx-setup — it auto-configures environment
                             variables, connects services, and deploys to Vercel. Zero to live
                             in 5 minutes.
                         </p>
@@ -254,14 +254,19 @@ export function Features() {
                     {/* Visual — right: Terminal */}
                     <div>
                         <Terminal className="w-full max-w-lg h-[400px]">
-                            <TypingAnimation>&gt; npx launchkit-setup</TypingAnimation>
+                            <TypingAnimation>&gt; npx launchx-setup</TypingAnimation>
 
-                            <AnimatedSpan className="text-zinc-500 whitespace-pre font-mono text-[10px] leading-tight">{`
-     _                        _     _  ___ _
-    | |    __ _ _   _ _ __   ___| |__ | |/ (_) |_
-    | |   / _\` | | | | '_ \\ / __| '_ \\| ' /| | __|
-    | |__| (_| | |_| | | | | (__| | | | . \\| | |_
-    |_____\\__,_|\\__,_|_| |_|\\___|_| |_|_|\\_\\_|\\__|`}</AnimatedSpan>
+                            <AnimatedSpan className="text-zinc-500 whitespace-pre font-mono text-[10px] leading-tight">{` /$$                                               /$$       /$$   /$$
+| $$                                              | $$      | $$  / $$
+| $$        /$$$$$$  /$$   /$$ /$$$$$$$   /$$$$$$$| $$$$$$$ |  $$/ $$/
+| $$       |____  $$| $$  | $$| $$__  $$ /$$_____/| $$__  $$ \   $$$$/ 
+| $$        /$$$$$$$| $$  | $$| $$   \ $$| $$      | $$   \ $$  >$$  $$ 
+| $$       /$$__  $$| $$  | $$| $$  | $$| $$      | $$  | $$ /$$/ \  $$
+| $$$$$$$$|  $$$$$$$|  $$$$$$/| $$  | $$|  $$$$$$$| $$  | $$| $$   \ $$
+|________/ \_______/ \______/ |__/  |__/ \_______/|__/  |__/|__/  |__/
+                                                                      
+                                                                      
+                                                                      `}</AnimatedSpan>
 
                             <AnimatedSpan className="text-zinc-300">{`\n🚀 Let's get your AI Wrapper deployed in 5 minutes`}</AnimatedSpan>
 

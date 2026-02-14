@@ -37,13 +37,13 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
 
         // 2. Send Welcome Email
         await resend.emails.send({
-            from: "LaunchKit <onboarding@resend.dev>", // TODO: Update with your verified domain
+            from: "LaunchX <onboarding@resend.dev>", // TODO: Update with your verified domain
             to: email,
-            subject: "Welcome to LaunchKit + Your 50% Off Code",
+            subject: "Welcome to LaunchX + Your 50% Off Code",
             html: `
             <div style="font-family: sans-serif; font-size: 16px; color: #333; background-color: #f9f9f9; padding: 40px; border-radius: 8px;">
                 <div style="max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                    <h1 style="font-size: 24px; font-weight: bold; margin-bottom: 20px; color: #000;">Welcome to LaunchKit! 🚀</h1>
+                    <h1 style="font-size: 24px; font-weight: bold; margin-bottom: 20px; color: #000;">Welcome to LaunchX! 🚀</h1>
                     <p style="line-height: 1.6; margin-bottom: 20px;">
                         Thanks for joining the waitlist! We're excited to have you on board.
                     </p>
@@ -57,7 +57,7 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
                         We'll notify you as soon as spots open up. In the meantime, if you have any questions or feedback, feel free to reply to this email.
                     </p>
                     <p style="color: #666; font-size: 14px; margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px;">
-                        Cheers,<br>The LaunchKit Team
+                        Cheers,<br>The LaunchX Team
                     </p>
                 </div>
             </div>

@@ -4,22 +4,25 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "LaunchKit — Ship Your Next.js App This Weekend",
+  title: "LaunchX — Ship Your Next.js App This Weekend",
   description:
     "Production-ready Next.js templates with AI rules baked in. Auth, payments, database — configured in 5 minutes. 80% fewer tokens wasted.",
   openGraph: {
-    title: "LaunchKit — Ship Your Next.js App This Weekend",
+    title: "LaunchX — Ship Your Next.js App This Weekend",
     description:
       "Production-ready Next.js templates with AI rules baked in. Auth, payments, database — configured in 5 minutes.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "LaunchKit — Ship Your Next.js App This Weekend",
+    title: "LaunchX — Ship Your Next.js App This Weekend",
     description:
       "Production-ready Next.js templates with AI rules baked in. Auth, payments, database — configured in 5 minutes.",
   },
 };
+
+import { Space_Grotesk } from "next/font/google";
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-space" });
 
 export default function RootLayout({
   children,
@@ -27,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable} ${spaceGrotesk.variable}`}>
       <body className="font-sans antialiased bg-black text-white">
         {children}
       </body>

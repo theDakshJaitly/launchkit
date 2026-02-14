@@ -39,7 +39,7 @@ export default function WaitlistPage() {
                         Join the waitlist
                     </h1>
                     <p className="text-zinc-400">
-                        Get early access to LaunchKit.
+                        Get early access to LaunchX.
                     </p>
                     {!state?.success && (
                         <p className="text-xs text-zinc-500 mt-2">
@@ -60,7 +60,7 @@ export default function WaitlistPage() {
                         </div>
                         <h3 className="text-white font-medium mb-2">You're on the list!</h3>
                         <p className="text-zinc-400 text-sm mb-6">
-                            Help us make LaunchKit better by answering a few quick questions.
+                            Help us make LaunchX better by answering a few quick questions.
                         </p>
 
                         <a href="#" target="_blank" rel="noopener noreferrer">

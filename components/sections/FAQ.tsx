@@ -9,7 +9,7 @@ const faqItems = [
   {
     question: "How is this different from other boilerplates?",
     answer:
-      "Most boilerplates are just code. LaunchKit includes .cursorrules that teach AI your entire architecture — cutting token usage by 80%. Plus one-command setup and living updates that keep templates current.",
+      "Most boilerplates are just code. LaunchX includes .cursorrules that teach AI your entire architecture — cutting token usage by 80%. Plus one-command setup and living updates that keep templates current.",
   },
   {
     question: "Will this work with my Cursor subscription?",
@@ -24,7 +24,7 @@ const faqItems = [
   {
     question: "What if I'm already halfway through a project?",
     answer:
-      "We include migration guides to adopt LaunchKit patterns into existing projects. Gradually improve your codebase without starting over.",
+      "We include migration guides to adopt LaunchX patterns into existing projects. Gradually improve your codebase without starting over.",
   },
   {
     question: "When does this launch?",
@@ -34,7 +34,7 @@ const faqItems = [
   {
     question: "Do I need to know how to code?",
     answer:
-      "Basic React and Next.js knowledge helps. If you can use Cursor, you can use LaunchKit. The AI handles the heavy lifting.",
+      "Basic React and Next.js knowledge helps. If you can use Cursor, you can use LaunchX. The AI handles the heavy lifting.",
   },
 ];
 
