@@ -256,7 +256,7 @@ export function Features() {
                         <Terminal className="w-full max-w-lg h-[400px]">
                             <TypingAnimation>&gt; npx launchx-setup</TypingAnimation>
 
-                            <AnimatedSpan className="text-zinc-500 whitespace-pre font-mono text-[10px] leading-tight">{` /$$                                               /$$       /$$   /$$
+                            <AnimatedSpan className="text-emerald-500 whitespace-pre font-mono text-[10px] leading-tight">{` /$$                                               /$$       /$$   /$$
 | $$                                              | $$      | $$  / $$
 | $$        /$$$$$$  /$$   /$$ /$$$$$$$   /$$$$$$$| $$$$$$$ |  $$/ $$/
 | $$       |____  $$| $$  | $$| $$__  $$ /$$_____/| $$__  $$ \   $$$$/ 
