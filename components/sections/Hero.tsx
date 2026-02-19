@@ -126,8 +126,26 @@ export function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease, delay: 0.4 }}
+              className="flex flex-col items-center"
             >
-              <Terminal className="w-full">
+              {/* Value pills — above terminal */}
+              <div className="mb-8 flex flex-wrap gap-2 justify-center">
+                <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/[0.1] text-[13px] text-zinc-300">
+                  <img src="https://cdn.simpleicons.org/cursor/white" alt="Cursor" className="h-3.5 w-3.5 opacity-70" />
+                  Built for Cursor
+                </span>
+
+                <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/[0.1] text-[13px] text-zinc-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-3.5 w-3.5 opacity-70"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /></svg>
+                  Deploy in 5 min
+                </span>
+                <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/[0.1] text-[13px] text-zinc-300">
+                  <img src="https://cdn.simpleicons.org/nextdotjs/white" alt="Next.js" className="h-3.5 w-3.5 opacity-70" />
+                  Next.js + TypeScript
+                </span>
+              </div>
+
+              <Terminal className="w-full max-w-lg">
                 <TypingAnimation>&gt; npx launchx-setup</TypingAnimation>
 
                 <AnimatedSpan className="text-zinc-400">
@@ -163,20 +181,13 @@ export function Hero() {
                 </TypingAnimation>
               </Terminal>
 
-              {/* Value pills — directly below terminal */}
-              <div className="mt-5 flex flex-wrap gap-2">
-                <span className="px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/[0.1] text-[13px] text-zinc-300">
-                  80% fewer AI tokens
-                </span>
-                <span className="px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/[0.1] text-[13px] text-zinc-300">
-                  5 production templates
-                </span>
-                <span className="px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/[0.1] text-[13px] text-zinc-300">
-                  200+ tested prompts
-                </span>
-                <span className="px-3 py-1.5 rounded-full bg-white/[0.06] border border-white/[0.1] text-[13px] text-zinc-300">
-                  5 min to deploy
-                </span>
+              {/* Integration logos — colorless */}
+              <div className="mt-6 flex items-center gap-20 justify-center">
+                <img src="https://cdn.simpleicons.org/nextdotjs/white" alt="Next.js" className="h-8 opacity-40 hover:opacity-70 transition-opacity duration-300" />
+                <img src="https://cdn.simpleicons.org/supabase/white" alt="Supabase" className="h-8 opacity-40 hover:opacity-70 transition-opacity duration-300" />
+                <img src="https://cdn.simpleicons.org/stripe/white" alt="Stripe" className="h-8 opacity-40 hover:opacity-70 transition-opacity duration-300" />
+                <img src="https://cdn.simpleicons.org/clerk/white" alt="Clerk" className="h-8 opacity-40 hover:opacity-70 transition-opacity duration-300" />
+                <img src="https://cdn.simpleicons.org/anthropic/white" alt="Anthropic" className="h-8 opacity-40 hover:opacity-70 transition-opacity duration-300" />
               </div>
             </motion.div>
           </div>

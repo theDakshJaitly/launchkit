@@ -140,7 +140,7 @@ export function Features() {
                     </div>
                 </motion.div>
 
-                {/* ── Hero Feature 2: What's Inside ── */}
+                {/* ── Hero Feature 2: Progressive AI Context ── */}
                 <motion.div
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -152,43 +152,131 @@ export function Features() {
                     <div className="order-2 lg:order-1 rounded-2xl bg-white/[0.02] border border-white/[0.06] p-4 md:p-6">
                         <Tree
                             className="bg-transparent overflow-hidden rounded-md text-[13px]"
-                            initialSelectedId="3"
-                            initialExpandedItems={["1", "5", "27"]}
+                            initialSelectedId="ai-2"
+                            initialExpandedItems={["root", "docs", "ai-context", "prompts", "skills", "security", "alternatives", "scripts"]}
                         >
-                            <Folder element="launchkit-template" value="1">
-                                <File value="2"><p>.cursorrules</p></File>
-                                <File value="3"><p>.windsurfrules</p></File>
-                                <File value="4"><p>.env.example</p></File>
-                                <Folder element="docs" value="5">
-                                    <File value="6"><p>SETUP.md</p></File>
-                                    <File value="7"><p>DEPLOYMENT.md</p></File>
-                                    <File value="8"><p>PROMPTS.md</p></File>
-                                    <File value="9"><p>PRD.md</p></File>
-                                    <Folder element="ai-context" value="10">
-                                        <File value="11"><p>overview.md</p></File>
-                                        <File value="12"><p>authentication.md</p></File>
-                                        <File value="13"><p>database.md</p></File>
-                                        <File value="14"><p>payments.md</p></File>
-                                        <File value="15"><p>api-routes.md</p></File>
+                            <Folder element="launchkit-template" value="root">
+                                {/* Level 1 — Always Loaded */}
+                                <File value="ai-1">
+                                    <p className="text-emerald-400/80">.cursorrules</p>
+                                </File>
+                                <File value="ai-2">
+                                    <p className="text-emerald-400/80">.windsurfrules</p>
+                                </File>
+                                <File value="ai-3"><p>.env.example</p></File>
+                                <Folder element="docs" value="docs">
+                                    <File value="d-1"><p>SETUP.md</p></File>
+                                    <File value="d-2"><p>DEPLOYMENT.md</p></File>
+                                    <File value="d-3"><p>ARCHITECTURE.md</p></File>
+                                    <File value="d-4"><p>PROMPTS.md</p></File>
+
+                                    {/* Level 2 — Loaded on Demand */}
+                                    <Folder element="ai-context" value="ai-context">
+                                        <File value="ac-1">
+                                            <p className="text-cyan-400/70">HANDOVER.md</p>
+                                        </File>
+                                        <File value="ac-2">
+                                            <p className="text-cyan-400/70">overview.md</p>
+                                        </File>
+                                        <File value="ac-3">
+                                            <p className="text-cyan-400/70">authentication.md</p>
+                                        </File>
+                                        <File value="ac-4">
+                                            <p className="text-cyan-400/70">database.md</p>
+                                        </File>
+                                        <File value="ac-5">
+                                            <p className="text-cyan-400/70">payments.md</p>
+                                        </File>
+                                        <File value="ac-6">
+                                            <p className="text-cyan-400/70">api-routes.md</p>
+                                        </File>
                                     </Folder>
-                                    <Folder element="skills" value="16">
-                                        <File value="17"><p>frontend-engineer.md</p></File>
-                                        <File value="18"><p>backend-engineer.md</p></File>
-                                        <File value="19"><p>devops-engineer.md</p></File>
-                                        <File value="20"><p>ui-ux-designer.md</p></File>
-                                        <File value="21"><p>product-manager.md</p></File>
+
+                                    {/* Level 3 — Loaded Per Task */}
+                                    <Folder element="prompts" value="prompts">
+                                        <File value="p-1">
+                                            <p className="text-purple-400/70">setup.md</p>
+                                        </File>
+                                        <File value="p-2">
+                                            <p className="text-purple-400/70">auth.md</p>
+                                        </File>
+                                        <File value="p-3">
+                                            <p className="text-purple-400/70">database.md</p>
+                                        </File>
+                                        <File value="p-4">
+                                            <p className="text-purple-400/70">payments.md</p>
+                                        </File>
+                                        <File value="p-5">
+                                            <p className="text-purple-400/70">api-routes.md</p>
+                                        </File>
+                                        <File value="p-6">
+                                            <p className="text-purple-400/70">ui.md</p>
+                                        </File>
+                                        <File value="p-7">
+                                            <p className="text-purple-400/70">email.md</p>
+                                        </File>
+                                        <File value="p-8">
+                                            <p className="text-purple-400/70">security.md</p>
+                                        </File>
+                                        <File value="p-9">
+                                            <p className="text-purple-400/70">performance.md</p>
+                                        </File>
+                                        <File value="p-10">
+                                            <p className="text-purple-400/70">debugging.md</p>
+                                        </File>
+                                        <File value="p-11">
+                                            <p className="text-purple-400/70">deployment.md</p>
+                                        </File>
+                                        <File value="p-12">
+                                            <p className="text-purple-400/70">refactoring.md</p>
+                                        </File>
                                     </Folder>
-                                    <Folder element="security" value="22">
-                                        <File value="23"><p>threat-modeling.md</p></File>
-                                        <File value="24"><p>owasp-checklist.md</p></File>
-                                        <File value="25"><p>security-review.md</p></File>
-                                        <File value="26"><p>common-vulnerabilities.md</p></File>
+
+                                    {/* Role Personas */}
+                                    <Folder element="skills" value="skills">
+                                        <File value="s-1">
+                                            <p className="text-blue-400/70">frontend-engineer.md</p>
+                                        </File>
+                                        <File value="s-2">
+                                            <p className="text-blue-400/70">backend-engineer.md</p>
+                                        </File>
+                                        <File value="s-3">
+                                            <p className="text-blue-400/70">devops-engineer.md</p>
+                                        </File>
+                                        <File value="s-4">
+                                            <p className="text-blue-400/70">ui-ux-designer.md</p>
+                                        </File>
+                                        <File value="s-5">
+                                            <p className="text-blue-400/70">product-manager.md</p>
+                                        </File>
+                                    </Folder>
+
+                                    {/* Security Context */}
+                                    <Folder element="security" value="security">
+                                        <File value="sec-1">
+                                            <p className="text-amber-400/70">threat-modeling.md</p>
+                                        </File>
+                                        <File value="sec-2">
+                                            <p className="text-amber-400/70">owasp-checklist.md</p>
+                                        </File>
+                                        <File value="sec-3">
+                                            <p className="text-amber-400/70">security-review.md</p>
+                                        </File>
+                                        <File value="sec-4">
+                                            <p className="text-amber-400/70">common-vulnerabilities.md</p>
+                                        </File>
+                                    </Folder>
+
+                                    {/* Alternatives */}
+                                    <Folder element="alternatives" value="alternatives">
+                                        <File value="alt-1"><p>supabase-auth.md</p></File>
+                                        <File value="alt-2"><p>mongodb-database.md</p></File>
                                     </Folder>
                                 </Folder>
-                                <Folder element="scripts" value="27">
-                                    <File value="28"><p>setup.sh</p></File>
-                                    <File value="29"><p>deploy.sh</p></File>
-                                    <File value="30"><p>check-env.js</p></File>
+                                <Folder element="scripts" value="scripts">
+                                    <File value="sc-1"><p>setup.sh</p></File>
+                                    <File value="sc-2"><p>deploy.sh</p></File>
+                                    <File value="sc-3"><p>check-env.js</p></File>
                                 </Folder>
                             </Folder>
                         </Tree>
@@ -200,25 +288,32 @@ export function Features() {
                             02
                         </p>
                         <h3 className="text-[28px] md:text-[32px] font-medium tracking-tight text-white mb-4 leading-tight">
-                            AI context built into every file
+                            Progressive AI context loading
                         </h3>
-                        <p className="text-zinc-400 text-[16px] leading-relaxed mb-6 max-w-md">
-                            Every template ships with AI rules, role-specific prompts, security
-                            checklists, and architecture docs — so your AI assistant understands
-                            the entire codebase from the first prompt.
+                        <p className="text-zinc-400 text-[16px] leading-relaxed mb-2 max-w-md">
+                            Your AI loads exactly what it needs, when it needs it — permanent rules, per-session context, and per-task prompts.
                         </p>
+                        <a
+                            href="#ai-architecture"
+                            className="text-emerald-400 text-[14px] underline underline-offset-4 hover:text-emerald-300 transition-colors mb-6 inline-block"
+                        >
+                            Know more →
+                        </a>
                         <div className="grid grid-cols-3 gap-4 border-t border-white/[0.08] pt-6">
                             <div className="text-center">
-                                <p className="text-[20px] md:text-[28px] font-medium text-white">127</p>
-                                <p className="text-[11px] md:text-[12px] text-zinc-500">AI rules</p>
+                                <p className="text-[18px] md:text-[22px] font-medium text-white">Level 1</p>
+                                <p className="text-[11px] md:text-[12px] text-zinc-400">Always loaded</p>
+                                <p className="text-[10px] md:text-[11px] text-zinc-600 mt-0.5">&lt;300 tokens</p>
                             </div>
                             <div className="text-center border-l border-white/[0.08]">
-                                <p className="text-[20px] md:text-[28px] font-medium text-white">5</p>
-                                <p className="text-[11px] md:text-[12px] text-zinc-500">personas</p>
+                                <p className="text-[18px] md:text-[22px] font-medium text-white">Level 2</p>
+                                <p className="text-[11px] md:text-[12px] text-zinc-400">On demand</p>
+                                <p className="text-[10px] md:text-[11px] text-zinc-600 mt-0.5">&lt;5k tokens</p>
                             </div>
                             <div className="text-center border-l border-white/[0.08]">
-                                <p className="text-[20px] md:text-[28px] font-medium text-white">200+</p>
-                                <p className="text-[11px] md:text-[12px] text-zinc-500">prompts</p>
+                                <p className="text-[18px] md:text-[22px] font-medium text-white">Level 3</p>
+                                <p className="text-[11px] md:text-[12px] text-zinc-400">Per task</p>
+                                <p className="text-[10px] md:text-[11px] text-zinc-600 mt-0.5">Token-efficient</p>
                             </div>
                         </div>
                     </div>
