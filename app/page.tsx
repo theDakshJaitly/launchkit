@@ -4,6 +4,7 @@ import {
   Hero,
   Features,
   AIArchitecture,
+  WhyLaunchX,
   Templates,
   HowItWorks,
   Pricing,
@@ -17,6 +18,7 @@ const dialSections = [
   { id: "hero", label: "Intro" },
   { id: "features", label: "Features" },
   { id: "ai-architecture", label: "AI Layer" },
+  { id: "why-launchx", label: "Why LaunchX" },
   { id: "templates", label: "Templates" },
   { id: "how-it-works", label: "How it works" },
   { id: "pricing", label: "Pricing" },
@@ -48,6 +50,7 @@ export default function Home() {
       <Hero />
       <Features />
       <AIArchitecture />
+      <WhyLaunchX />
       <Templates />
       <div id="how-it-works">
         <HowItWorks />

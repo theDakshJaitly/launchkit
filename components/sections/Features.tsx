@@ -153,7 +153,7 @@ export function Features() {
                         <Tree
                             className="bg-transparent overflow-hidden rounded-md text-[13px]"
                             initialSelectedId="ai-2"
-                            initialExpandedItems={["root", "docs", "ai-context", "prompts", "skills", "security", "alternatives", "scripts"]}
+                            initialExpandedItems={["root", "docs", "scripts"]}
                         >
                             <Folder element="launchkit-template" value="root">
                                 {/* Level 1 — Always Loaded */}

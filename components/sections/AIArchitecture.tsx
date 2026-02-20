@@ -59,7 +59,7 @@ export function AIArchitecture() {
                             THE AI LAYER
                         </p>
                         <h2 className="text-[28px] md:text-[32px] font-medium tracking-tight text-white mb-4 leading-tight">
-                            The AI layer that makes vibe coding actually work
+                            We built a skill graph for your codebase.
                         </h2>
                         <p className="text-zinc-400 text-[16px] leading-relaxed mb-8 max-w-md">
                             Most templates give you code. We give your AI the knowledge to

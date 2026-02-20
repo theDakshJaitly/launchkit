@@ -154,6 +154,7 @@ const Tree = forwardRef<HTMLDivElement, TreeViewProps>(
             ref={ref}
             className="relative h-full px-2"
             dir={dir as Direction}
+            style={{ overflowAnchor: "none" }}
           >
             <AccordionPrimitive.Root
               {...props}
@@ -306,6 +307,7 @@ const File = forwardRef<
       <button
         ref={ref}
         type="button"
+        tabIndex={-1}
         disabled={!isSelectable}
         className={cn(
           "flex w-fit items-center gap-1 rounded-md pr-1 text-sm duration-200 ease-in-out rtl:pr-0 rtl:pl-1",
