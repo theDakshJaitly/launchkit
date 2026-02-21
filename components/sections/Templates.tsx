@@ -10,6 +10,7 @@ import {
     Smartphone,
 } from "lucide-react";
 import { AvatarCircles } from "@/components/ui/avatar-circles";
+import { useWaitlistSpots } from "@/hooks/use-waitlist-spots";
 
 const ease: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
@@ -122,6 +123,7 @@ export function Templates() {
     const totalValue = templates.reduce((sum, t) => sum + t.price, 0);
     const bundlePrice = 299;
     const earlyBundlePrice = Math.round(bundlePrice * 0.5);
+    const { spotsLeft } = useWaitlistSpots();
 
     return (
         <section id="templates" className="py-20 md:py-32">
@@ -257,7 +259,7 @@ export function Templates() {
                                     Get early access →
                                 </button>
                             </a>
-                            <p className="text-[12px] text-zinc-600">50% off for first 100 signups</p>
+                            <p className="text-[12px] text-zinc-600">50% off — {spotsLeft !== null ? spotsLeft : "–"} spots left</p>
                         </div>
                     </div>
                 </motion.div>

@@ -9,10 +9,12 @@ import {
   Button,
 } from "@/components/ui";
 import { LineShadowText } from "@/components/ui/line-shadow-text";
+import { useWaitlistSpots } from "@/hooks/use-waitlist-spots";
 
 const ease: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
 
 export function Hero() {
+  const { spotsLeft } = useWaitlistSpots();
   return (
     <section
       id="hero"
@@ -108,7 +110,7 @@ export function Hero() {
                   <span className="text-zinc-700 text-[10px]">·</span>
                   <div className="flex items-center gap-1.5 text-[13px] text-emerald-400">
                     <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-pulse" />
-                    8 spots left
+                    {spotsLeft !== null ? spotsLeft : "–"} spots left
                   </div>
                 </div>
 

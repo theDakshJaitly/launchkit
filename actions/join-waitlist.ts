@@ -1,6 +1,7 @@
 "use server";
 
 import { resend } from "@/lib/resend/client";
+import { redirect } from "next/navigation";
 import { z } from "zod";
 
 const schema = z.object({
@@ -20,6 +21,8 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
         return { error: "Please fill in all fields." };
     }
 
+    let success = false;
+
     try {
         // 1. Add to Resend Audience (Contact)
         const { error } = await resend.contacts.create({
@@ -27,7 +30,7 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
             firstName,
             lastName,
             unsubscribed: false,
-            audienceId: process.env.RESEND_AUDIENCE_ID || "general", // Fallback if no ID provided, Resend uses default audience usually
+            audienceId: process.env.RESEND_AUDIENCE_ID || "general",
         });
 
         if (error) {
@@ -37,7 +40,7 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
 
         // 2. Send Welcome Email
         await resend.emails.send({
-            from: "LaunchX <onboarding@resend.dev>", // TODO: Update with your verified domain
+            from: "LaunchX <hello@launchx.page>",
             to: email,
             subject: "Welcome to LaunchX + Your 50% Off Code",
             html: `
@@ -64,9 +67,13 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
             `,
         });
 
-        return { success: true };
+        success = true;
     } catch (err) {
         console.error(err);
         return { error: "Something went wrong" };
+    }
+
+    if (success) {
+        redirect("/waitlist/success");
     }
 }
