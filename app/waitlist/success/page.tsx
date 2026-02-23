@@ -69,7 +69,7 @@ export default function WaitlistSuccessPage() {
                     {/* RIGHT: ASCII Art Image */}
                     <div className="relative hidden lg:block border-l border-white/[0.06]">
                         <Image
-                            src="/ascii-art-5.png"
+                            src="/ascii-art-5.webp"
                             alt="ASCII art of a rocket launch"
                             fill
                             className="object-cover"
