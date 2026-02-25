@@ -38,30 +38,55 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
             return { error: "Failed to join waitlist. Please try again." };
         }
 
-        // 2. Send Welcome Email
         await resend.emails.send({
             from: "LaunchX <hello@launchx.page>",
             to: email,
-            subject: "Welcome to LaunchX + Your 50% Off Code",
+            subject: "Welcome to the LaunchX Waitlist 🚀",
             html: `
-            <div style="font-family: sans-serif; font-size: 16px; color: #333; background-color: #f9f9f9; padding: 40px; border-radius: 8px;">
-                <div style="max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05);">
-                    <h1 style="font-size: 24px; font-weight: bold; margin-bottom: 20px; color: #000;">Welcome to LaunchX! 🚀</h1>
-                    <p style="line-height: 1.6; margin-bottom: 20px;">
-                        Thanks for joining the waitlist! We're excited to have you on board.
-                    </p>
-                    <p style="line-height: 1.6; margin-bottom: 20px;">
-                        As promised, here is your 50% off discount code for when we launch:
-                    </p>
-                    <div style="background-color: #000; color: #fff; padding: 15px 25px; border-radius: 6px; display: inline-block; font-family: monospace; font-size: 18px; letter-spacing: 1px; margin-bottom: 30px;">
-                        LAUNCH50
+            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #000000; padding: 40px 20px;">
+                <div style="max-width: 500px; margin: 0 auto; background-color: #09090b; border: 1px solid #27272a; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+                    
+                    <!-- MacOS Terminal Header -->
+                    <div style="background-color: #18181b; padding: 12px 16px; border-bottom: 1px solid #27272a; display: flex; align-items: center; gap: 8px;">
+                        <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background-color: #ef4444;"></span>
+                        <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background-color: #eab308; margin-left: 6px;"></span>
+                        <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background-color: #22c55e; margin-left: 6px;"></span>
+                        <span style="margin-left: auto; color: #71717a; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 12px;">launchx — bash</span>
                     </div>
-                    <p style="line-height: 1.6; margin-bottom: 20px;">
-                        We'll notify you as soon as spots open up. In the meantime, if you have any questions or feedback, feel free to reply to this email.
-                    </p>
-                    <p style="color: #666; font-size: 14px; margin-top: 40px; border-top: 1px solid #eee; padding-top: 20px;">
-                        Cheers,<br>The LaunchX Team
-                    </p>
+
+                    <div style="padding: 40px;">
+                        <p style="font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 14px; color: #22c55e; margin: 0 0 24px 0;">
+                            > connection established.
+                        </p>
+                        <h1 style="font-size: 24px; font-weight: 600; margin: 0 0 24px 0; color: #ffffff; letter-spacing: -0.5px;">
+                            You're on the list.
+                        </h1>
+                        <p style="font-size: 16px; line-height: 1.6; color: #a1a1aa; margin: 0 0 24px 0;">
+                            Hi ${firstName},
+                        </p>
+                        <p style="font-size: 16px; line-height: 1.6; color: #a1a1aa; margin: 0 0 24px 0;">
+                            Thanks for joining the LaunchX early access waitlist. You are officially in line for our upcoming launch. 
+                        </p>
+                        <p style="font-size: 16px; line-height: 1.6; color: #a1a1aa; margin: 0 0 32px 0;">
+                            Keep an eye on your inbox. If you're selected for the first batch, we'll send you an exclusive link and your <strong>50% off code</strong> right here when we go live.
+                        </p>
+
+                        <!-- Call to Action Button -->
+                        <div style="margin: 32px 0 40px 0;">
+                            <a href="https://x.com/lauuunchx" target="_blank" style="background-color: #ffffff; color: #000000; text-decoration: none; padding: 12px 24px; font-weight: 600; font-size: 15px; border-radius: 6px; display: inline-block;">
+                                Follow on X for Updates
+                            </a>
+                        </div>
+
+                        <div style="border-top: 1px solid #27272a; padding-top: 24px;">
+                            <p style="font-size: 14px; color: #71717a; margin: 0;">
+                                — The LaunchX Team
+                            </p>
+                            <p style="font-size: 12px; color: #52525b; margin: 16px 0 0 0;">
+                                If you have any questions, simply reply to this email.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
             `,

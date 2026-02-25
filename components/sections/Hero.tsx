@@ -72,14 +72,14 @@ export function Hero() {
                 transition={{ duration: 0.7, ease, delay: 0.1 }}
                 className="text-hero mb-4 md:mb-5"
               >
-                1 command.
+                AI that remembers.
                 <br />
-                1 weekend.
+                Code that works.
                 <br />
                 <span className="font-mono text-zinc-500">
-                  1 SaaS{" "}
+                  Ship this{" "}
                   <LineShadowText className="italic" shadowColor="#22c55e">
-                    shipped.
+                    weekend.
                   </LineShadowText>
                 </span>
               </motion.h1>
@@ -91,9 +91,7 @@ export function Hero() {
                 transition={{ duration: 0.6, ease, delay: 0.2 }}
                 className="text-[16px] text-zinc-400 max-w-md mb-6 md:mb-8 leading-relaxed"
               >
-                AI-optimized Next.js templates that make vibe coding actually
-                work. Your AI writes better code because it finally understands
-                your architecture.
+                5 production-ready Next.js templates with AI context tailored to every corner of your codebase. Your AI knows the architecture, the patterns, the conventions — from day one.
               </motion.p>
 
               {/* CTA */}

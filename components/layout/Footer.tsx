@@ -9,22 +9,10 @@ export function Footer() {
         </p>
         <div className="flex gap-8">
           <a
-            href="#"
+            href="mailto:thedakshjaitly@gmail.com"
             className="text-[13px] text-zinc-600 hover:text-zinc-300 transition-colors duration-200"
           >
             Contact
-          </a>
-          <a
-            href="#"
-            className="text-[13px] text-zinc-600 hover:text-zinc-300 transition-colors duration-200"
-          >
-            Twitter
-          </a>
-          <a
-            href="#"
-            className="text-[13px] text-zinc-600 hover:text-zinc-300 transition-colors duration-200"
-          >
-            Terms
           </a>
         </div>
       </div>
