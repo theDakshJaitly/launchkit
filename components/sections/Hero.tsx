@@ -184,12 +184,12 @@ export function Hero() {
               </Terminal>
 
               {/* Integration logos — colorless */}
-              <div className="mt-6 flex items-center gap-20 justify-center">
-                <img src="https://cdn.simpleicons.org/nextdotjs/white" alt="Next.js" className="h-8 opacity-40 hover:opacity-70 transition-opacity duration-300" />
-                <img src="https://cdn.simpleicons.org/supabase/white" alt="Supabase" className="h-8 opacity-40 hover:opacity-70 transition-opacity duration-300" />
-                <img src="https://cdn.simpleicons.org/stripe/white" alt="Stripe" className="h-8 opacity-40 hover:opacity-70 transition-opacity duration-300" />
-                <img src="https://cdn.simpleicons.org/clerk/white" alt="Clerk" className="h-8 opacity-40 hover:opacity-70 transition-opacity duration-300" />
-                <img src="https://cdn.simpleicons.org/claude/white" alt="Claude" className="h-8 opacity-40 hover:opacity-70 transition-opacity duration-300" />
+              <div className="mt-6 flex flex-wrap items-center gap-8 md:gap-20 justify-center">
+                <img src="https://cdn.simpleicons.org/nextdotjs/white" alt="Next.js" className="h-6 md:h-8 opacity-40 hover:opacity-70 transition-opacity duration-300" />
+                <img src="https://cdn.simpleicons.org/supabase/white" alt="Supabase" className="h-6 md:h-8 opacity-40 hover:opacity-70 transition-opacity duration-300" />
+                <img src="https://cdn.simpleicons.org/stripe/white" alt="Stripe" className="h-6 md:h-8 opacity-40 hover:opacity-70 transition-opacity duration-300" />
+                <img src="https://cdn.simpleicons.org/clerk/white" alt="Clerk" className="h-6 md:h-8 opacity-40 hover:opacity-70 transition-opacity duration-300" />
+                <img src="https://cdn.simpleicons.org/claude/white" alt="Claude" className="h-6 md:h-8 opacity-40 hover:opacity-70 transition-opacity duration-300" />
               </div>
             </motion.div>
           </div>
