@@ -130,7 +130,6 @@ export default function WaitlistPage() {
                             alt="ASCII art of a rocket launch"
                             fill
                             className="object-cover"
-                            priority
                         />
                     </div>
                 </div>

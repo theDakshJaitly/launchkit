@@ -18,10 +18,10 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen relative overflow-hidden bg-black flex items-center"
+      className="min-h-screen relative overflow-hidden bg-black flex items-center bg-[url('/mobile-hero-bg.webp')] bg-cover bg-center md:bg-none"
     >
-      {/* PrismaticBurst Background */}
-      <div className="absolute inset-0 z-0">
+      {/* PrismaticBurst Background - Hidden on mobile */}
+      <div className="absolute inset-0 z-0 hidden md:block">
         <PrismaticBurst
           intensity={2.5}
           speed={0.3}
