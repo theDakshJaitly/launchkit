@@ -179,7 +179,7 @@ export function Hero() {
                 </AnimatedSpan>
 
                 <TypingAnimation className="text-zinc-500">
-                  Done in 4m 32s. Start building features.
+                  {"Done in 4m 32s.\nStart building features."}
                 </TypingAnimation>
               </Terminal>
 
