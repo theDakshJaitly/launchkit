@@ -46,14 +46,13 @@ export default function WaitlistSuccessPage() {
                             </p>
 
                             <div className="space-y-3">
-                                <a href="#" target="_blank" rel="noopener noreferrer" className="block">
-                                    <Button
-                                        variant="default"
-                                        className="w-full bg-white text-black hover:bg-zinc-200 h-11 rounded-xl text-[14px] font-medium"
-                                    >
-                                        Help us improve {'->'}
-                                    </Button>
-                                </a>
+                                <Button
+                                    variant="default"
+                                    className="w-full bg-white text-black hover:bg-zinc-200 h-11 rounded-xl text-[14px] font-medium"
+                                    onClick={() => (window.location.href = "/waitlist/survey" + window.location.search)}
+                                >
+                                    Help us improve {'->'}
+                                </Button>
 
                                 <Button
                                     variant="default"

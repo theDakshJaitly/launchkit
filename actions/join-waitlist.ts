@@ -99,6 +99,6 @@ export async function joinWaitlist(prevState: any, formData: FormData) {
     }
 
     if (success) {
-        redirect("/waitlist/success");
+        redirect("/waitlist/success?email=" + encodeURIComponent(email));
     }
 }
