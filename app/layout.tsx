@@ -6,6 +6,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://launchx.page"),
   title: "LaunchX — Ship Your Next.js App This Weekend",
   description:
     "Production-ready Next.js templates with AI rules baked in. Auth, payments, database — configured in 5 minutes. 80% fewer tokens wasted.",
@@ -14,12 +15,21 @@ export const metadata: Metadata = {
     description:
       "Production-ready Next.js templates with AI rules baked in. Auth, payments, database — configured in 5 minutes.",
     type: "website",
+    images: [
+      {
+        url: "/launchx_twitter.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "LaunchX Preview",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "LaunchX — Ship Your Next.js App This Weekend",
     description:
       "Production-ready Next.js templates with AI rules baked in. Auth, payments, database — configured in 5 minutes.",
+    images: ["/launchx_twitter.jpeg"],
   },
 };
 
