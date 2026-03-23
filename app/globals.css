@@ -198,3 +198,23 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+/* ── Mex page palette — scoped to .mex-page ── */
+.mex-page {
+  --mex-primary: #4169E1;
+  --mex-primary-light: #5A82F0;
+  --mex-primary-dim: #2A4BA0;
+  --mex-accent: #E8845C;
+  --mex-bg-1: #0A0A0F;
+  --mex-bg-2: #111118;
+  --mex-bg-3: #16161F;
+  --mex-text: #E8E8F0;
+  --mex-text-muted: #8888A0;
+  --mex-border: #2A2A3A;
+  --mex-shell-green: #5B8C5A;
+}
+
+.mex-page ::selection {
+  background: rgba(65, 105, 225, 0.25);
+  color: #E8E8F0;
+}
