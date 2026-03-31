@@ -17,7 +17,7 @@ import { VerticalDial } from "@/components/ui";
 const dialSections = [
   { id: "hero", label: "Intro" },
   { id: "features", label: "Features" },
-  { id: "ai-architecture", label: "AI Layer" },
+  { id: "ai-architecture", label: "MEX" },
   { id: "why-launchx", label: "Why LaunchX" },
   { id: "templates", label: "Templates" },
   { id: "how-it-works", label: "How it works" },

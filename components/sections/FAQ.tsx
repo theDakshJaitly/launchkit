@@ -9,7 +9,7 @@ const faqItems = [
   {
     question: "How is this different from other boilerplates?",
     answer:
-      "Most templates just give you code. LaunchX gives your AI memory. We built a 3-layer skill graph into the codebase that teaches Cursor, Windsurf, or Copilot exactly how your architecture works, so it stops breaking patterns in Week 3.",
+      "Most templates just give you code. LaunchX gives your AI memory using MEX. We built a 3-layer skill graph into the codebase that teaches Cursor, Windsurf, or Copilot exactly how your architecture works, so it stops breaking patterns in Week 3.",
   },
   {
     question: "Wait, does this consume a ton of my premium AI requests?",

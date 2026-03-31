@@ -1,9 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
+import { Star } from "lucide-react";
 
 const ease: [number, number, number, number] = [0.25, 0.1, 0.25, 1];
+
+const ASCII_LOGO = `███╗   ███╗███████╗██╗  ██╗
+████╗ ████║██╔════╝╚██╗██╔╝
+██╔████╔██║█████╗   ╚███╔╝
+██║╚██╔╝██║██╔══╝   ██╔██╗
+██║ ╚═╝ ██║███████╗██╔╝ ██╗
+╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝`;
 
 const layers = [
     {
@@ -34,13 +43,30 @@ const layers = [
 
 export function AIArchitecture() {
     const [activeLayer, setActiveLayer] = useState<number | null>(null);
+    const [starCount, setStarCount] = useState<number | null>(null);
 
-    const rc = (id: number) => activeLayer === id ? "#34d399" : "#a1a1aa";
-    const tc = (id: number) => activeLayer === id ? "#34d399" : "#e4e4e7";
-    const sc = (id: number) => activeLayer === id ? "#34d399" : "#a1a1aa";
+    useEffect(() => {
+        fetch("https://api.github.com/repos/theDakshJaitly/mex")
+            .then(res => res.json())
+            .then(data => {
+                if (data.stargazers_count !== undefined) {
+                    setStarCount(data.stargazers_count);
+                }
+            })
+            .catch(console.error);
+    }, []);
+
+    // Colors for circle layers (1, 2, 3)
+    const rc = (id: number) => activeLayer === id ? "#4169E1" : "#a1a1aa";
+    const tc = (id: number) => activeLayer === id ? "#4169E1" : "#e4e4e7";
+    const sc = (id: number) => activeLayer === id ? "#4169E1" : "#a1a1aa";
     const ro = (id: number) => activeLayer === id ? 1 : activeLayer !== null ? 0.12 : 0.8;
     const to2 = (id: number) => activeLayer === id ? 1 : activeLayer !== null ? 0.1 : 0.85;
     const so = (id: number) => activeLayer === id ? 1 : activeLayer !== null ? 0.08 : 0.65;
+
+    // Mex elements opacity (bottom strip)
+    const mexOpacity = activeLayer === 0 ? 1 : activeLayer !== null ? 0.12 : 0.7;
+    const mexColor = activeLayer === 0 ? "#4169E1" : "#a1a1aa";
 
     const t = "opacity 0.35s, fill 0.35s, stroke 0.35s, strokeWidth 0.35s, fillOpacity 0.35s";
 
@@ -48,34 +74,143 @@ export function AIArchitecture() {
         <section id="ai-architecture" className="py-20 md:py-32">
             <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-20">
 
-                {/* Cinematic Top Section */}
+                {/* ═══ Section Header — MEX themed ═══ */}
                 <motion.div
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, ease }}
-                    className="max-w-3xl mx-auto text-center mb-16 md:mb-24"
+                    className="max-w-3xl mx-auto text-center mb-10 md:mb-14"
                 >
-                    <p className="text-[13px] font-mono text-emerald-400 mb-6 tracking-wide uppercase">
-                        The Context Wall
+                    <p
+                        className="text-[20px] font-mono mb-6 tracking-wide uppercase"
+                        style={{ color: "#4169E1" }}
+                    >
+                        Meet MEX
                     </p>
                     <h2 className="text-[32px] md:text-[40px] font-medium tracking-tight text-white mb-6 leading-tight">
-                        Other templates give your AI code to read.<br />
-                        <span className="text-emerald-400">LaunchX gives it memory.</span>
+                        The open-source memory layer behind the <span className="text-emerald-400">LaunchX</span> templates.
                     </h2>
-                    <div className="text-zinc-400 text-[16px] leading-relaxed space-y-4">
-                        <p>
-                            Every vibe coder hits the same wall. Week 1 is magic — the AI writes perfect code.
-                            Week 2 it starts breaking patterns. Week 3 you're spending more time fixing AI mistakes
-                            than shipping features.
-                        </p>
-                        <p>
-                            The problem isn't your prompts. It's that your AI has no memory of how your codebase works.
-                        </p>
+                    <p className="text-zinc-400 text-[16px] leading-relaxed">
+                        The AI never forgets your stack, patterns, or conventions ever.
+                    </p>
+                </motion.div>
+
+                {/* ═══ MEX Showcase Card (Layer 00) ═══ */}
+                <motion.div
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, ease, delay: 0.05 }}
+                    className="mb-12 md:mb-16"
+                >
+                    <div
+                        className="relative rounded-2xl overflow-hidden p-6 md:p-8 transition-all duration-350"
+                        style={{
+                            background: "linear-gradient(135deg, rgba(65, 105, 225, 0.08) 0%, rgba(65, 105, 225, 0.03) 50%, rgba(0,0,0,0.4) 100%)",
+                            border: "1px solid rgba(65, 105, 225, 0.2)",
+                            boxShadow: activeLayer === 0 ? "0 0 40px rgba(65, 105, 225, 0.12)" : "none",
+                        }}
+                    >
+                        {/* Subtle radial glow */}
+                        <div
+                            className="absolute top-0 left-0 w-full h-full pointer-events-none"
+                            style={{
+                                background: "radial-gradient(circle at 20% 50%, rgba(65, 105, 225, 0.06) 0%, transparent 60%)",
+                            }}
+                        />
+
+                        <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-0">
+                            {/* Left — ASCII Logo + Badge + Description */}
+                            <div className="flex-shrink-0">
+                                <div className="flex items-center gap-3 mb-4">
+                                    <span
+                                        className="px-2 py-0.5 rounded-md text-[11px] font-mono font-medium"
+                                        style={{
+                                            background: "rgba(65, 105, 225, 0.15)",
+                                            border: "1px solid rgba(65, 105, 225, 0.3)",
+                                            color: "#4169E1",
+                                        }}
+                                    >
+                                        00
+                                    </span>
+                                    <span className="text-[11px] font-mono text-zinc-500 uppercase tracking-wider">
+                                        The foundation
+                                    </span>
+                                </div>
+                                <pre
+                                    className="text-[8px] sm:text-[10px] md:text-[11px] leading-tight font-mono select-none mb-4"
+                                    style={{ color: "#4169E1" }}
+                                >
+                                    {ASCII_LOGO}
+                                </pre>
+                                <p className="text-[13px] text-zinc-400 max-w-sm leading-relaxed">
+                                    The 3 layers below run on MEX — persistent, navigable project memory with drift detection baked in.
+                                </p>
+                            </div>
+
+                            {/* Center — Mascot */}
+                            <div className="flex-1 flex justify-center">
+                                <motion.div
+                                    animate={{ y: [0, -8, 0] }}
+                                    transition={{
+                                        duration: 4,
+                                        repeat: Infinity,
+                                        ease: "easeInOut",
+                                    }}
+                                >
+                                    <Image
+                                        src="/mex-mascot.svg"
+                                        alt="mex mascot — pixel-art hermit crab"
+                                        width={150}
+                                        height={150}
+                                        className="select-none drop-shadow-lg"
+                                    />
+                                </motion.div>
+                            </div>
+
+                            {/* Right — CTAs stacked vertically */}
+                            <div className="flex flex-col gap-3 flex-shrink-0 md:mr-8">
+                                <a
+                                    href="/mex"
+                                    className="inline-flex items-center justify-center gap-2 font-medium text-[14px] px-6 py-2.5 rounded-full transition-all duration-200 text-white hover:opacity-90"
+                                    style={{ background: "#4169E1" }}
+                                >
+                                    Explore MEX →
+                                </a>
+                                <a
+                                    href="https://github.com/theDakshJaitly/mex"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center justify-center gap-2 font-medium text-[14px] pl-6 pr-4 py-2 rounded-full transition-all duration-200 hover:border-[rgba(65,105,225,0.5)]"
+                                    style={{
+                                        color: "#4169E1",
+                                        border: "1px solid rgba(65, 105, 225, 0.3)",
+                                        background: "rgba(65, 105, 225, 0.05)",
+                                    }}
+                                >
+                                    <span>GitHub</span>
+                                    {starCount !== null ? (
+                                        <div 
+                                            className="flex items-center justify-center gap-1.5 px-2.5 py-0.5 rounded-full ml-1 border"
+                                            style={{
+                                                background: "rgba(65, 105, 225, 0.1)",
+                                                borderColor: "rgba(65, 105, 225, 0.2)"
+                                            }}
+                                        >
+                                            <Star className="w-3 h-3" fill="currentColor" />
+                                            <span className="text-[12px] font-mono font-medium pt-[1px]">{starCount}</span>
+                                        </div>
+                                    ) : (
+                                        <Star className="w-3.5 h-3.5 ml-1" />
+                                    )}
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </motion.div>
 
-                {/* Architecture Split */}
+                {/* ═══ Architecture Split — Layers 01/02/03 + Diagram ═══ */}
                 <motion.div
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -85,7 +220,6 @@ export function AIArchitecture() {
                 >
                     {/* Left Column — Text */}
                     <div>
-
                         <div className="space-y-0">
                             {layers.map((layer, i) => (
                                 <div
@@ -95,7 +229,7 @@ export function AIArchitecture() {
                                     onMouseLeave={() => setActiveLayer(null)}
                                 >
                                     <div className="flex items-center gap-3 mb-2">
-                                        <span className="px-2 py-0.5 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-400 font-mono font-medium">
+                                        <span className="px-2 py-0.5 rounded-md bg-[rgba(65,105,225,0.1)] border border-[rgba(65,105,225,0.2)] text-[11px] text-[#4169E1] font-mono font-medium">
                                             {layer.badge}
                                         </span>
                                         <h3 className="text-[15px] font-medium text-white">
@@ -114,7 +248,9 @@ export function AIArchitecture() {
                     </div>
 
                     {/* Right Column — Concentric Circles Diagram */}
-                    <div className="flex flex-col items-center justify-center rounded-2xl bg-white/[0.02] border border-white/[0.06] p-4 md:p-6">
+                    <div className="flex flex-col items-center justify-center rounded-2xl bg-white/[0.02] border border-white/[0.06] p-4 md:p-6 relative">
+
+                        {/* ═══ Concentric Circles SVG ═══ */}
                         <svg
                             viewBox="0 0 600 660"
                             className="w-full"
@@ -129,7 +265,6 @@ export function AIArchitecture() {
                                 opacity={ro(3)}
                                 style={{ transition: t }}
                             />
-                            {/* 3 — number + title at top of ring */}
                             <text
                                 x="300" y="48"
                                 fill={tc(3)}
@@ -148,7 +283,6 @@ export function AIArchitecture() {
                             >
                                 Loaded per Task
                             </text>
-                            {/* 3 — left content (in outer ring zone, above middle circle) */}
                             <text
                                 x="110" y="110"
                                 fill={sc(3)}
@@ -167,7 +301,6 @@ export function AIArchitecture() {
                             >
                                 & Executions
                             </text>
-                            {/* 3 — right content */}
                             <text
                                 x="420" y="100"
                                 fill={sc(3)}
@@ -205,7 +338,6 @@ export function AIArchitecture() {
                                 opacity={ro(2)}
                                 style={{ transition: t }}
                             />
-                            {/* 2 — number + title at top of ring */}
                             <text
                                 x="300" y="135"
                                 fill={tc(2)}
@@ -224,20 +356,19 @@ export function AIArchitecture() {
                             >
                                 Loaded per Session
                             </text>
-                            {/* 2 — content below inner circle (still inside ring 2) */}
                             <text
-                                x="300" y="370"
+                                x="300" y="350"
                                 fill={sc(2)}
-                                fontSize="14" fontFamily="monospace" textAnchor="middle"
+                                fontSize="12" fontFamily="monospace" textAnchor="middle"
                                 opacity={so(2)}
                                 style={{ transition: t }}
                             >
                                 – HANDOVER.md (the map)
                             </text>
                             <text
-                                x="300" y="393"
+                                x="300" y="368"
                                 fill={sc(2)}
-                                fontSize="14" fontFamily="monospace" textAnchor="middle"
+                                fontSize="12" fontFamily="monospace" textAnchor="middle"
                                 opacity={so(2)}
                                 style={{ transition: t }}
                             >
@@ -253,22 +384,20 @@ export function AIArchitecture() {
                                 opacity={ro(1)}
                                 style={{ transition: t }}
                             />
-                            {/* 1 — title */}
                             <text
                                 x="300" y="244"
                                 fill={tc(1)}
                                 fontSize="16" fontFamily="monospace" textAnchor="middle" fontWeight="700"
-                                opacity={activeLayer === 1 ? 1 : activeLayer !== null ? 0.1 : 0.9}
+                                opacity={to2(1)}
                                 style={{ transition: t }}
                             >
                                 1 · Always
                             </text>
-                            {/* 1 — content */}
                             <text
                                 x="300" y="270"
                                 fill={sc(1)}
                                 fontSize="13" fontFamily="monospace" textAnchor="middle"
-                                opacity={activeLayer === 1 ? 1 : activeLayer !== null ? 0.08 : 0.7}
+                                opacity={so(1)}
                                 style={{ transition: t }}
                             >
                                 .cursorrules
@@ -277,7 +406,7 @@ export function AIArchitecture() {
                                 x="300" y="288"
                                 fill={sc(1)}
                                 fontSize="12" fontFamily="monospace" textAnchor="middle"
-                                opacity={activeLayer === 1 ? 1 : activeLayer !== null ? 0.08 : 0.7}
+                                opacity={so(1)}
                                 style={{ transition: t }}
                             >
                                 type files
@@ -307,7 +436,6 @@ export function AIArchitecture() {
                             >
                                 Supporting Layer
                             </text>
-                            {/* Skills pill */}
                             <rect
                                 x="100" y="575" width="180" height="48" rx="24"
                                 fill="none"
@@ -334,7 +462,6 @@ export function AIArchitecture() {
                             >
                                 (Role Personas)
                             </text>
-                            {/* Security pill */}
                             <rect
                                 x="320" y="575" width="180" height="48" rx="24"
                                 fill="none"
@@ -362,79 +489,42 @@ export function AIArchitecture() {
                                 (threat models)
                             </text>
                         </svg>
-                    </div>
-                </motion.div>
 
-                {/* Terminal / Chat Interface Bottom Section */}
-                <motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, ease, delay: 0.2 }}
-                    className="mt-20 md:mt-32 max-w-4xl mx-auto"
-                >
-                    <div className="rounded-2xl border border-white/[0.08] bg-[#0a0a0a] overflow-hidden shadow-2xl">
-                        {/* Fake Browser/Terminal Header */}
-                        <div className="flex items-center gap-2 px-4 py-3 border-b border-white/[0.06] bg-white/[0.01]">
-                            <div className="flex gap-1.5">
-                                <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
-                                <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
-                                <div className="w-2.5 h-2.5 rounded-full bg-zinc-700" />
-                            </div>
-                        </div>
-
-                        {/* Chat Body */}
-                        <div className="p-6 md:p-8 space-y-6">
-                            {/* User Message */}
-                            <div className="flex gap-4">
-                                <div className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center shrink-0">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-zinc-400"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>
+                        {/* ═══ Powered by MEX — bottom strip ═══ */}
+                        <div
+                            className="w-full mt-3 rounded-xl px-4 py-3 transition-all duration-350"
+                            style={{
+                                opacity: mexOpacity,
+                                background: activeLayer === 0 ? "rgba(65, 105, 225, 0.06)" : "rgba(255, 255, 255, 0.02)",
+                                border: activeLayer === 0 ? "1px solid rgba(65, 105, 225, 0.3)" : "1px solid rgba(255, 255, 255, 0.06)",
+                                boxShadow: activeLayer === 0 ? "0 0 20px rgba(65, 105, 225, 0.1)" : "none",
+                                transition: "opacity 0.35s, background 0.35s, border 0.35s, box-shadow 0.35s",
+                            }}
+                        >
+                            <div className="flex items-center justify-center gap-2">
+                                    <span
+                                        className="text-[12px] font-mono transition-colors duration-350"
+                                        style={{ color: mexColor }}
+                                    >
+                                        ✦
+                                    </span>
+                                    <span className="text-[13px] text-zinc-400">
+                                        Powered by{" "}
+                                        <a
+                                            href="/mex"
+                                            className="font-semibold transition-colors duration-200 hover:opacity-80"
+                                            style={{ color: "#4169E1" }}
+                                        >
+                                            MEX
+                                        </a>
+                                        {" "}— the scaffold beneath every layer
+                                    </span>
                                 </div>
-                                <div className="flex-1 space-y-2">
-                                    <p className="text-[13px] font-medium text-zinc-300">You</p>
-                                    <div className="text-[14px] text-zinc-300">
-                                        Update the user profile component to save the new avatar URL to the database.
-                                    </div>
-                                    <div className="mt-2 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-[13px] text-red-400/90 relative inline-block">
-                                        <div className="absolute -top-2.5 left-3 px-1.5 bg-[#0a0a0a] text-[9px] font-mono tracking-wider text-red-500 uppercase">Without LaunchX</div>
-                                        "Sure, I will import <code>@supabase/supabase-js</code> directly into the React component and run an update query."
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="w-full h-px bg-white/[0.04]" />
-
-                            {/* AI Message */}
-                            <div className="flex gap-4">
-                                <div className="relative w-8 h-8 rounded-full flex items-center justify-center shrink-0 bg-emerald-500/10 border border-emerald-500/20">
-                                    <span className="text-emerald-400 text-[14px] font-mono">X</span>
-                                </div>
-                                <div className="flex-1 space-y-2">
-                                    <p className="text-[13px] font-medium text-emerald-400">With LaunchX</p>
-                                    <div className="space-y-3">
-                                        <div className="flex flex-col gap-1.5">
-                                            <div className="flex items-center gap-2 text-[12px] font-mono text-zinc-500">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400"><polyline points="20 6 9 17 4 12" /></svg>
-                                                Reading .cursorrules...
-                                            </div>
-                                            <div className="flex items-center gap-2 text-[12px] font-mono text-zinc-500">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-emerald-400"><polyline points="20 6 9 17 4 12" /></svg>
-                                                Loading /docs/database.md...
-                                            </div>
-                                        </div>
-                                        <div className="text-[14px] text-zinc-300">
-                                            I'll create a new Server Action for this update. According to your <code className="text-emerald-400 bg-emerald-500/10 px-1 rounded">.cursorrules</code>, we never run mutations directly from client components. Instead, we use the pre-configured Supabase Server Client.
-                                        </div>
-
-                                        <div className="mt-2 text-[13px] text-zinc-500">
-                                            Writing to <code>actions/user.ts</code>...
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </motion.div>
+
+
             </div >
         </section >
     );
