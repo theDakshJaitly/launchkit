@@ -32,10 +32,14 @@ const checkers = [
     name: "cross-file",
     catches: "Same dependency with different versions across files",
   },
+  {
+    name: "orphans",
+    catches: "Context files not referenced in ROUTER.md or patterns",
+  },
 ];
 
 const commands = [
-  { cmd: "mex check", desc: "Run all 7 checkers, output drift score and issues" },
+  { cmd: "mex check", desc: "Run all 8 checkers, output drift score and issues" },
   { cmd: "mex check --quiet", desc: "One-liner: mex: drift score 92/100 (1 warning)" },
   { cmd: "mex init", desc: "Pre-scan codebase, build structured brief for AI" },
   { cmd: "mex sync", desc: "Detect drift → build per-file prompts → AI fixes → verify" },
@@ -65,7 +69,7 @@ export function MexFeatures() {
             className="text-[16px] leading-relaxed mb-2"
             style={{ color: "var(--mex-text-muted)" }}
           >
-            Seven checkers validate your scaffold against the real codebase.
+            Eight checkers validate your scaffold against the real codebase.
             Zero tokens. Zero AI.
           </p>
           <p

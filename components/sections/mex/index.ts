@@ -6,3 +6,5 @@ export { MexBeforeAfter } from "./MexBeforeAfter";
 export { MexInstallation } from "./MexInstallation";
 export { MexWorksWith } from "./MexWorksWith";
 export { MexFooter } from "./MexFooter";
+export { MexNavbar } from "./MexNavbar";
+export { MexUpsell } from "./MexUpsell";

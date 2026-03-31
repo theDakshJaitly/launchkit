@@ -109,11 +109,9 @@ export function MexHero() {
               transition={{ duration: 0.6, ease, delay: 0.3 }}
               className="flex flex-col sm:flex-row gap-3"
             >
-              {/* Star on GitHub */}
+              {/* Read Documentation */}
               <a
-                href="https://github.com/theDakshJaitly/mex"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/mex/docs"
                 className="inline-flex items-center justify-center gap-2 font-medium text-[15px] px-7 py-3 rounded-full transition-colors duration-200 text-white"
                 style={{
                   background: "var(--mex-primary)",
@@ -123,6 +121,27 @@ export function MexHero() {
                 }
                 onMouseLeave={(e) =>
                   (e.currentTarget.style.background = "var(--mex-primary)")
+                }
+              >
+                Read Documentation
+              </a>
+
+              {/* Star on GitHub */}
+              <a
+                href="https://github.com/theDakshJaitly/mex"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 font-medium text-[15px] px-7 py-3 rounded-full transition-colors duration-200"
+                style={{
+                  background: "var(--mex-bg-3)",
+                  border: "1px solid var(--mex-border)",
+                  color: "var(--mex-text)",
+                }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.borderColor = "var(--mex-primary)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.borderColor = "var(--mex-border)")
                 }
               >
                 <Star className="w-4 h-4" />
@@ -152,6 +171,28 @@ export function MexHero() {
                   <Copy className="w-3.5 h-3.5 shrink-0 opacity-50" />
                 )}
               </button>
+            </motion.div>
+
+            {/* mex check preview */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease, delay: 0.4 }}
+              className="mt-8 pt-6 border-t"
+              style={{ borderColor: "var(--mex-border)" }}
+            >
+              <div 
+                className="inline-flex items-center gap-3 font-mono text-[12px] px-3 py-2 rounded-lg bg-black/40"
+                style={{ 
+                  color: "var(--mex-text-muted)",
+                  border: "1px solid var(--mex-border)"
+                }}
+              >
+                <span className="text-[#a1a1aa] select-none">$</span>
+                <span className="text-white">mex check --quiet</span>
+                <span className="mx-1 text-[#3f3f46] select-none">|</span>
+                <span><span style={{ color: "var(--mex-primary)" }}>mex:</span> drift score 100/100. 0 errors.</span>
+              </div>
             </motion.div>
           </div>
 

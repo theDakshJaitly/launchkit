@@ -181,6 +181,57 @@ export function MexBeforeAfter() {
             {PATTERNS}
           </pre>
         </motion.div>
+
+        {/* Token Savings Table */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease, delay: 0.3 }}
+          className="mt-6 rounded-xl overflow-hidden"
+          style={{
+            background: "var(--mex-bg-3)",
+            border: "1px solid var(--mex-border)",
+          }}
+        >
+          <div className="px-5 py-3.5" style={{ borderBottom: "1px solid var(--mex-border)" }}>
+            <p className="text-[14px] font-medium" style={{ color: "var(--mex-text)" }}>
+              OpenClaw Token Savings Benchmark
+            </p>
+          </div>
+          <div className="p-5 overflow-x-auto">
+            <table className="w-full text-left border-collapse text-[13px] whitespace-nowrap">
+              <thead>
+                <tr style={{ color: "var(--mex-text-muted)", borderBottom: "1px solid var(--mex-border)" }}>
+                  <th className="pb-3 pr-4 font-normal">Scenario</th>
+                  <th className="pb-3 pr-4 font-normal text-right">Standard Agent</th>
+                  <th className="pb-3 pr-4 font-normal text-right">With mex Context</th>
+                  <th className="pb-3 font-normal text-right">Token Reduction</th>
+                </tr>
+              </thead>
+              <tbody style={{ color: "var(--mex-text)" }}>
+                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.03)" }}>
+                  <td className="py-3 pr-4">Feature Refactor</td>
+                  <td className="py-3 pr-4 font-mono text-right">~58,000</td>
+                  <td className="py-3 pr-4 font-mono text-right" style={{ color: "var(--mex-primary)" }}>~22,000</td>
+                  <td className="py-3 font-mono text-right text-emerald-400">62%</td>
+                </tr>
+                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.03)" }}>
+                  <td className="py-3 pr-4">Complex Bug Fix</td>
+                  <td className="py-3 pr-4 font-mono text-right">~32,000</td>
+                  <td className="py-3 pr-4 font-mono text-right" style={{ color: "var(--mex-primary)" }}>~14,000</td>
+                  <td className="py-3 font-mono text-right text-emerald-400">56%</td>
+                </tr>
+                <tr>
+                  <td className="py-3 pr-4">Database Migration</td>
+                  <td className="py-3 pr-4 font-mono text-right">~45,000</td>
+                  <td className="py-3 pr-4 font-mono text-right" style={{ color: "var(--mex-primary)" }}>~14,400</td>
+                  <td className="py-3 font-mono text-right text-emerald-400">68%</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

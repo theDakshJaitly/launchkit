@@ -52,12 +52,20 @@ export function MexHowItWorks() {
             How it works
           </h2>
           <p
-            className="text-[16px] leading-relaxed"
+            className="text-[16px] leading-relaxed mb-6"
             style={{ color: "var(--mex-text-muted)" }}
           >
             Navigate, don&apos;t dump. The agent loads only the context it needs
             for the current task.
           </p>
+          <div className="inline-flex flex-wrap items-center gap-3">
+             <span className="text-[12px] font-medium px-3 py-1 rounded-full text-emerald-400 border border-emerald-500/20" style={{ background: "rgba(16, 185, 129, 0.1)" }}>
+               Independent Benchmark: 10/10 Tests Passed
+             </span>
+             <span className="text-[12px] font-medium px-3 py-1 rounded-full text-blue-400 border border-blue-500/20" style={{ background: "rgba(59, 130, 246, 0.1)" }}>
+               100/100 Perfect Drift Score
+             </span>
+          </div>
         </motion.div>
 
         {/* Step flow */}

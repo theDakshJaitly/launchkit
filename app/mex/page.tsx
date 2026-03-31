@@ -9,6 +9,8 @@ import {
   MexInstallation,
   MexWorksWith,
   MexFooter,
+  MexNavbar,
+  MexUpsell,
 } from "@/components/sections/mex";
 
 export default function MexPage() {
@@ -20,11 +22,15 @@ export default function MexPage() {
         color: "var(--mex-text)",
       }}
     >
-      <MexHero />
+      <MexNavbar />
+      <div className="pt-16">
+        <MexHero />
+      </div>
       <MexProblem />
       <MexHowItWorks />
       <MexFeatures />
       <MexBeforeAfter />
+      <MexUpsell />
       <MexInstallation />
       <MexWorksWith />
       <MexFooter />
