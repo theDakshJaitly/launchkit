@@ -19,6 +19,15 @@ export const metadata: Metadata = {
   },
 };
 
+import { MexNavbar } from "@/components/sections/mex";
+
 export default function MexLayout({ children }: { children: React.ReactNode }) {
-  return <div className="mex-page">{children}</div>;
+  return (
+    <div className="mex-page">
+      <MexNavbar />
+      <div className="pt-16">
+        {children}
+      </div>
+    </div>
+  );
 }

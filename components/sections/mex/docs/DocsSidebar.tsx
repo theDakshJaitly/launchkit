@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { motion, AnimatePresence } from "framer-motion";
+import { ListTree, X } from "lucide-react";
 
 const sections = [
   { 
@@ -101,6 +103,7 @@ const sections = [
 
 export function DocsSidebar() {
   const [activeSection, setActiveSection] = useState<string>("installation");
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -128,76 +131,139 @@ export function DocsSidebar() {
     return () => observer.disconnect();
   }, []);
 
-  return (
-    <aside className="w-64 shrink-0 hidden lg:block border-r py-0" style={{ borderColor: "var(--mex-border)" }}>
-      <div className="sticky top-16 pt-10 pb-12 pr-6 max-h-[calc(100vh-4rem)] overflow-y-auto w-full">
+  // Prevent background scrolling when mobile sidebar is open
+  useEffect(() => {
+    if (isMobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isMobileOpen]);
+
+  const SidebarContent = ({ isMobile = false }: { isMobile?: boolean }) => (
+    <div className={cn("w-full h-full pb-12", isMobile ? "px-6 pt-6" : "pt-10 pr-6 overflow-y-auto max-h-[calc(100vh-4rem)]")}>
+      {isMobile && (
+        <div className="flex items-center justify-between mb-8 pb-4 border-b border-[#27272a]">
+          <h3 className="font-space font-medium text-[16px] text-white">
+            Documentation
+          </h3>
+          <button onClick={() => setIsMobileOpen(false)} className="text-[#a1a1aa] hover:text-white transition-colors p-2 bg-[#111] rounded-full">
+            <X className="w-5 h-5" />
+          </button>
+        </div>
+      )}
+      {!isMobile && (
         <h3 className="font-space font-medium text-[15px] mb-4 tracking-wide" style={{ color: "var(--mex-text)" }}>
           Documentation
         </h3>
-        <nav className="space-y-1.5 flex flex-col pb-10">
-          {sections.map((sec) => {
-            const isSubActive = sec.subsections?.some(s => s.id === activeSection);
-            const isParentActive = activeSection === sec.id || isSubActive;
-            
-            return (
-              <div key={sec.id} className="flex flex-col">
-                <Link
-                  href={`#${sec.id}`}
-                  className={cn(
-                    "text-[14px] px-3 py-1.5 rounded-md transition-colors w-full border border-transparent flex items-center gap-2",
-                    isParentActive
-                      ? "font-medium"
-                      : "hover:bg-[var(--mex-bg-3)]"
-                  )}
-                  style={
-                    isParentActive
-                      ? {
-                          background: "rgba(65, 105, 225, 0.1)",
-                          color: "var(--mex-primary)",
-                          borderColor: "rgba(65, 105, 225, 0.2)"
-                        }
-                      : {
-                          color: "var(--mex-text-muted)"
-                        }
-                  }
-                >
-                  <div 
-                    className={cn(
-                      "w-1 h-3 rounded-full transition-colors",
-                      isParentActive ? "bg-[var(--mex-primary)]" : "bg-transparent"
-                    )}
-                  />
-                  {sec.label}
-                </Link>
-                
-                {sec.subsections && (
-                  <div className="flex flex-col mt-1 mb-2 ml-[22px] border-l border-[var(--mex-border)] pl-3 space-y-1">
-                    {sec.subsections.map((sub) => (
-                      <Link
-                        key={sub.id}
-                        href={`#${sub.id}`}
-                        className={cn(
-                          "text-[13px] py-1 px-2 rounded-md transition-colors w-full",
-                          activeSection === sub.id
-                            ? "text-[var(--mex-primary)] font-medium"
-                            : "text-[var(--mex-text-muted)] hover:text-[var(--mex-text)] hover:bg-[var(--mex-bg-3)]"
-                        )}
-                        style={
-                          activeSection === sub.id
-                            ? { background: "rgba(65, 105, 225, 0.08)" }
-                            : {}
-                        }
-                      >
-                        {sub.label}
-                      </Link>
-                    ))}
-                  </div>
+      )}
+      <nav className="space-y-1.5 flex flex-col pb-10">
+        {sections.map((sec) => {
+          const isSubActive = sec.subsections?.some(s => s.id === activeSection);
+          const isParentActive = activeSection === sec.id || isSubActive;
+          
+          return (
+            <div key={sec.id} className="flex flex-col">
+              <Link
+                href={`#${sec.id}`}
+                onClick={() => isMobile && setIsMobileOpen(false)}
+                className={cn(
+                  "text-[14px] px-3 py-1.5 rounded-md transition-colors w-full border border-transparent flex items-center gap-2",
+                  isParentActive
+                    ? "font-medium"
+                    : "hover:bg-[var(--mex-bg-3)]"
                 )}
-              </div>
-            );
-          })}
-        </nav>
-      </div>
-    </aside>
+                style={
+                  isParentActive
+                    ? {
+                        background: "rgba(65, 105, 225, 0.1)",
+                        color: "var(--mex-primary)",
+                        borderColor: "rgba(65, 105, 225, 0.2)"
+                      }
+                    : {
+                        color: "var(--mex-text-muted)"
+                      }
+                }
+              >
+                <div 
+                  className={cn(
+                    "w-1 h-3 rounded-full transition-colors",
+                    isParentActive ? "bg-[var(--mex-primary)]" : "bg-transparent"
+                  )}
+                />
+                {sec.label}
+              </Link>
+              
+              {sec.subsections && (
+                <div className="flex flex-col mt-1 mb-2 ml-[22px] border-l border-[var(--mex-border)] pl-3 space-y-1">
+                  {sec.subsections.map((sub) => (
+                    <Link
+                      key={sub.id}
+                      href={`#${sub.id}`}
+                      onClick={() => isMobile && setIsMobileOpen(false)}
+                      className={cn(
+                        "text-[13px] py-1 px-2 rounded-md transition-colors w-full",
+                        activeSection === sub.id
+                          ? "text-[var(--mex-primary)] font-medium"
+                          : "text-[var(--mex-text-muted)] hover:text-[var(--mex-text)] hover:bg-[var(--mex-bg-3)]"
+                      )}
+                      style={
+                        activeSection === sub.id
+                          ? { background: "rgba(65, 105, 225, 0.08)" }
+                          : {}
+                      }
+                    >
+                      {sub.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </nav>
+    </div>
+  );
+
+  return (
+    <>
+      {/* Desktop Sidebar */}
+      <aside className="w-64 shrink-0 hidden lg:block border-r py-0 sticky top-16" style={{ borderColor: "var(--mex-border)" }}>
+        <SidebarContent />
+      </aside>
+
+      {/* Mobile Floating Action Button */}
+      <button 
+        className="lg:hidden fixed bottom-6 right-6 z-40 bg-[var(--mex-primary)] text-white p-4 rounded-full shadow-lg shadow-[var(--mex-primary)]/25 flex items-center justify-center border border-[var(--mex-primary-light)]"
+        onClick={() => setIsMobileOpen(true)}
+        aria-label="Open Documentation Sidebar"
+      >
+        <ListTree className="w-6 h-6" />
+      </button>
+
+      {/* Mobile Side Sheet */}
+      <AnimatePresence>
+        {isMobileOpen && (
+          <>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="lg:hidden fixed inset-0 bg-[#000]/60 backdrop-blur-sm z-[110]"
+              onClick={() => setIsMobileOpen(false)}
+            />
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="lg:hidden fixed inset-y-0 right-0 w-[85vw] sm:w-[350px] bg-[#050505] border-l border-[#27272a] shadow-2xl z-[120] overflow-y-auto"
+            >
+              <SidebarContent isMobile />
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

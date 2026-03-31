@@ -22,10 +22,7 @@ export default function MexPage() {
         color: "var(--mex-text)",
       }}
     >
-      <MexNavbar />
-      <div className="pt-16">
-        <MexHero />
-      </div>
+      <MexHero />
       <MexProblem />
       <MexHowItWorks />
       <MexFeatures />

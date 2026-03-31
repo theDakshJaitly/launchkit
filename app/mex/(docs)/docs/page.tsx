@@ -11,7 +11,7 @@ export default function DocsPage() {
   return (
     <div className="max-w-7xl mx-auto px-6 flex">
       <DocsSidebar />
-      <main className="flex-1 py-12 lg:pl-16 max-w-3xl">
+      <main className="flex-1 py-12 lg:pl-16 w-full max-w-full lg:max-w-3xl min-w-0 overflow-x-hidden">
         <div className="mb-16">
           <h1 className="text-4xl font-space font-medium tracking-tight mb-4" style={{ color: "var(--mex-text)" }}>
             mex documentation
@@ -959,8 +959,8 @@ export default function DocsPage() {
                     The drift engine lives in <code className="font-mono text-[13px] text-[var(--mex-primary)] bg-[#111] border border-[#27272a] rounded px-1.5 py-0.5">src/drift/</code>. Key files:
                   </p>
 
-                  <div className="bg-[#111] border rounded-xl overflow-x-auto mb-8 shadow-inner" style={{ borderColor: 'var(--mex-border)' }}>
-                    <table className="w-full text-left text-[14px]">
+                  <div className="bg-[#111] border rounded-xl overflow-x-auto mb-8 shadow-inner w-full" style={{ borderColor: 'var(--mex-border)' }}>
+                    <table className="w-full text-left text-[14px] min-w-[500px]">
                       <thead className="bg-[#1a1a1c] text-[#a1a1aa] border-b border-[#27272a]">
                         <tr>
                           <th className="px-6 py-4 font-mono font-medium whitespace-nowrap min-w-[150px]">File</th>
