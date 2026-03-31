@@ -1,5 +1,3 @@
-import { DocsNavbar } from "@/components/sections/mex/docs/DocsNavbar";
-
 export default function DocsLayout({ children }: { children: React.ReactNode }) {
   return (
     <div 
@@ -9,7 +7,6 @@ export default function DocsLayout({ children }: { children: React.ReactNode }) 
         color: "var(--mex-text)",
       }}
     >
-      <DocsNavbar />
       <div className="flex-1 w-full">
         {children}
       </div>

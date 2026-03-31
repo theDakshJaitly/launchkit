@@ -228,7 +228,7 @@ export function DocsSidebar() {
   return (
     <>
       {/* Desktop Sidebar */}
-      <aside className="w-64 shrink-0 hidden lg:block border-r py-0 sticky top-16" style={{ borderColor: "var(--mex-border)" }}>
+      <aside className="w-64 shrink-0 hidden lg:block border-r py-0 sticky top-16 self-start max-h-[calc(100vh-4rem)] overflow-y-auto" style={{ borderColor: "var(--mex-border)" }}>
         <SidebarContent />
       </aside>
 
