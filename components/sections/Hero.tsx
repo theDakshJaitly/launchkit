@@ -91,7 +91,15 @@ export function Hero() {
                 transition={{ duration: 0.6, ease, delay: 0.2 }}
                 className="text-[16px] text-zinc-400 max-w-md mb-6 md:mb-8 leading-relaxed"
               >
-                5 production-ready Next.js templates with AI context tailored to every corner of your codebase. Your AI knows the architecture, the patterns, the conventions — from day one.
+                Production-ready Next.js templates powered by{" "}
+                <a
+                  href="/mex"
+                  className="font-semibold transition-colors duration-200 hover:opacity-80"
+                  style={{ color: "#4169E1" }}
+                >
+                  MEX
+                </a>
+                {" "}— persistent project memory for your AI. Your AI knows the architecture, the patterns, the conventions — from day one.
               </motion.p>
 
               {/* CTA */}

@@ -154,7 +154,7 @@ export function Features() {
                             initialSelectedId="ai-2"
                             initialExpandedItems={["root", "docs", "scripts"]}
                         >
-                            <Folder element="launchkit-template" value="root">
+                            <Folder element="launchx-template" value="root">
                                 {/* Level 1 — Always Loaded */}
                                 <File value="ai-1">
                                     <p className="text-emerald-400/80">.cursorrules</p>
@@ -290,7 +290,15 @@ export function Features() {
                             Progressive AI context loading
                         </h3>
                         <p className="text-zinc-400 text-[16px] leading-relaxed mb-2 max-w-md">
-                            Your AI loads exactly what it needs, when it needs it — permanent rules, per-session context, and per-task prompts.
+                            Built on{" "}
+                            <a
+                                href="/mex"
+                                className="font-semibold transition-colors duration-200 hover:opacity-80"
+                                style={{ color: "#4169E1" }}
+                            >
+                                MEX
+                            </a>
+                            {" "}— your AI loads exactly what it needs, when it needs it. Permanent rules, per-session context, and per-task prompts.
                         </p>
                         <a
                             href="#ai-architecture"

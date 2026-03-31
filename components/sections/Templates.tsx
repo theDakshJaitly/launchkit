@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 import {
     Bot,
@@ -192,88 +193,135 @@ export function Templates() {
 
                 {/* Template cards — 3 top row, 2 bottom row centered */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
-                    {templates.map((template, i) => (
-                        <motion.div
-                            key={i}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, ease, delay: i * 0.06 }}
-                            className={`rounded-2xl bg-zinc-900/80 border border-white/[0.06] p-6 hover:bg-zinc-900 hover:border-white/[0.1] transition-all duration-300 flex flex-col ${i < 3
-                                ? "lg:col-span-2"
-                                : i === 3
-                                    ? "lg:col-span-3"
-                                    : "lg:col-span-3"
-                                }`}
-                        >
-                            {/* Header */}
-                            <div className="flex items-center gap-3 mb-4">
-                                <div className="w-9 h-9 rounded-xl bg-white/[0.05] flex items-center justify-center">
-                                    <template.icon size={18} strokeWidth={1.5} className="text-zinc-400" />
-                                </div>
-                                <div>
-                                    <h3 className="text-[15px] font-medium text-white">{template.name}</h3>
-                                    <div className="flex items-baseline gap-2">
-                                        <span className="text-zinc-600 text-[16px] line-through">${template.originalPrice}</span>
-                                        <span className="text-emerald-400 text-[20px] font-semibold">
-                                            ${template.price}
-                                        </span>
-                                        <span className="text-zinc-500 text-[12px]">/lifetime</span>
+                    {templates.map((template, i) => {
+                        const cardInner = (
+                            <>
+                                {/* Header */}
+                                <div className="flex items-center gap-3 mb-4">
+                                    <div className="w-9 h-9 rounded-xl bg-white/[0.05] flex items-center justify-center">
+                                        <template.icon size={18} strokeWidth={1.5} className="text-zinc-400" />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-[15px] font-medium text-white">{template.name}</h3>
+                                        <div className="flex items-baseline gap-2">
+                                            <span className="text-zinc-600 text-[16px] line-through">${template.originalPrice}</span>
+                                            <span className="text-emerald-400 text-[20px] font-semibold">
+                                                ${template.price}
+                                            </span>
+                                            <span className="text-zinc-500 text-[12px]">/lifetime</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            {/* Description */}
-                            <p className="text-[13px] text-zinc-500 leading-relaxed mb-5">{template.description}</p>
+                                {/* Description */}
+                                <p className="text-[13px] text-zinc-500 leading-relaxed mb-5">{template.description}</p>
 
-                            {/* Tech stack icons */}
-                            <div className="mb-5">
-                                <AvatarCircles avatarUrls={template.stack} />
-                            </div>
-
-                            {/* Pre-built features */}
-                            <div className="space-y-2 mb-5 flex-1">
-                                {template.prebuilt.map((item, j) => {
-                                    const isHighlight = typeof item === 'object' && item.highlight;
-                                    const label = typeof item === 'object' ? item.label : item;
-                                    return (
-                                        <div key={j} className="flex items-start gap-2 text-[12px]">
-                                            <span className={isHighlight ? "text-emerald-400 mt-0.5 font-bold" : "text-emerald-400 mt-0.5"}>
-                                                {isHighlight ? "✦" : "✓"}
-                                            </span>
-                                            <span className={isHighlight ? "text-emerald-300 font-medium" : "text-zinc-400"}>
-                                                {label}
-                                            </span>
-                                        </div>
-                                    )
-                                })}
-                            </div>
-
-                            {/* Perfect for building */}
-                            <div className="pt-4 border-t border-white/[0.06] mb-5">
-                                <p className="text-[11px] text-zinc-600 mb-2 uppercase tracking-wider">
-                                    Build with it
-                                </p>
-                                <div className="flex flex-wrap gap-1.5">
-                                    {template.buildWith.map((item) => (
-                                        <span
-                                            key={item}
-                                            className="text-[11px] text-zinc-500"
-                                        >
-                                            {item}{template.buildWith.indexOf(item) < template.buildWith.length - 1 ? " ·" : ""}
-                                        </span>
-                                    ))}
+                                {/* Tech stack icons */}
+                                <div className="mb-5">
+                                    <AvatarCircles avatarUrls={template.stack} />
                                 </div>
-                            </div>
 
-                            {/* Get button */}
-                            <a href="/waitlist" className="mt-auto">
-                                <button className="w-full py-2.5 rounded-xl bg-white text-black text-[13px] font-medium hover:bg-zinc-200 transition-all duration-200 cursor-pointer">
-                                    Get template →
-                                </button>
-                            </a>
-                        </motion.div>
-                    ))}
+                                {/* Pre-built features */}
+                                <div className="space-y-2 mb-5 flex-1">
+                                    {template.prebuilt.map((item, j) => {
+                                        const isHighlight = typeof item === 'object' && item.highlight;
+                                        const label = typeof item === 'object' ? item.label : item;
+                                        return (
+                                            <div key={j} className="flex items-start gap-2 text-[12px]">
+                                                <span className={isHighlight ? "text-emerald-400 mt-0.5 font-bold" : "text-emerald-400 mt-0.5"}>
+                                                    {isHighlight ? "✦" : "✓"}
+                                                </span>
+                                                <span className={isHighlight ? "text-emerald-300 font-medium" : "text-zinc-400"}>
+                                                    {label}
+                                                </span>
+                                            </div>
+                                        )
+                                    })}
+                                </div>
+
+                                {/* Perfect for building */}
+                                <div className="pt-4 border-t border-white/[0.06] mb-5">
+                                    <p className="text-[11px] text-zinc-600 mb-2 uppercase tracking-wider">
+                                        Build with it
+                                    </p>
+                                    <div className="flex flex-wrap gap-1.5">
+                                        {template.buildWith.map((item) => (
+                                            <span
+                                                key={item}
+                                                className="text-[11px] text-zinc-500"
+                                            >
+                                                {item}{template.buildWith.indexOf(item) < template.buildWith.length - 1 ? " ·" : ""}
+                                            </span>
+                                        ))}
+                                    </div>
+                                </div>
+
+                                {/* Get button */}
+                                <a href="/waitlist" className="mt-auto">
+                                    <button className="w-full py-2.5 rounded-xl bg-white text-black text-[13px] font-medium hover:bg-zinc-200 transition-all duration-200 cursor-pointer">
+                                        Get template →
+                                    </button>
+                                </a>
+                            </>
+                        );
+
+                        if (i === 0) {
+                            return (
+                                <motion.div
+                                    key={i}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, ease, delay: i * 0.06 }}
+                                    className="lg:col-span-2 group relative z-10 pt-8 mt-[-32px]"
+                                >
+                                    {/* Mascot peeking from behind */}
+                                    <a 
+                                        href="/mex"
+                                        className="absolute right-6 top-[12px] w-[52px] h-[52px] z-0 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] group-hover:-translate-y-[30px] group-hover:rotate-6 cursor-pointer hover:scale-105"
+                                    >
+                                        <Image src="/mex-mascot.svg" alt="MEX Mascot" fill className="object-contain drop-shadow-lg" />
+                                    </a>
+
+                                    {/* Folder Tab Overlaying Card Border */}
+                                    <div 
+                                        className="absolute left-[20px] top-[4px] h-[30px] px-3 flex items-center justify-center rounded-t-xl border-x-2 border-t-2 z-20 bg-[#111113] group-hover:bg-[#18181b] transition-colors duration-300"
+                                        style={{ borderColor: "rgba(65, 105, 225, 0.6)" }}
+                                    >
+                                        <span className="text-[11px] font-mono tracking-wide text-zinc-300">
+                                            Pre-configured with <a href="/mex" className="hover:opacity-80 transition-opacity" style={{ color: "#4169E1" }}>MEX</a>
+                                        </span>
+                                    </div>
+                                    
+                                    {/* Seamless border hider line */}
+                                    <div className="absolute left-[22px] top-[30px] h-[4px] w-[182px] z-20 bg-[#111113] group-hover:bg-[#18181b] transition-colors duration-300" />
+
+                                    {/* Main Card */}
+                                    <div
+                                        className="relative z-10 rounded-2xl p-6 transition-colors duration-300 flex flex-col h-full border-2 bg-[#111113] group-hover:bg-[#18181b]"
+                                        style={{ borderColor: "rgba(65, 105, 225, 0.6)" }}
+                                    >
+                                        {cardInner}
+                                    </div>
+                                </motion.div>
+                            );
+                        }
+
+                        return (
+                            <motion.div
+                                key={i}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, ease, delay: i * 0.06 }}
+                                className={`${i < 3 ? "lg:col-span-2" : i === 3 ? "lg:col-span-3" : "lg:col-span-3"}`}
+                            >
+                                <div className="rounded-2xl bg-zinc-900/80 border border-white/[0.06] p-6 hover:bg-zinc-900 hover:border-white/[0.1] transition-all duration-300 flex flex-col h-full">
+                                    {cardInner}
+                                </div>
+                            </motion.div>
+                        );
+                    })}
                 </div>
 
                 {/* All Access Bundle Banner */}
