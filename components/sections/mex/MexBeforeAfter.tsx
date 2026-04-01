@@ -182,54 +182,117 @@ export function MexBeforeAfter() {
           </pre>
         </motion.div>
 
-        {/* Token Savings Table */}
+        {/* Benchmark Section */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease, delay: 0.3 }}
-          className="mt-6 rounded-xl overflow-hidden"
-          style={{
-            background: "var(--mex-bg-3)",
-            border: "1px solid var(--mex-border)",
-          }}
+          className="mt-6 space-y-4"
         >
-          <div className="px-5 py-3.5" style={{ borderBottom: "1px solid var(--mex-border)" }}>
-            <p className="text-[14px] font-medium" style={{ color: "var(--mex-text)" }}>
-              OpenClaw Token Savings Benchmark
-            </p>
+          {/* Your Test */}
+          <div 
+            className="rounded-xl overflow-hidden"
+            style={{
+              background: "var(--mex-bg-3)",
+              border: "1px solid var(--mex-border)",
+            }}
+          >
+            <div className="px-5 py-3.5" style={{ borderBottom: "1px solid var(--mex-border)" }}>
+              <p className="text-[14px] font-medium" style={{ color: "var(--mex-text)" }}>
+                Your Test — Next.js SaaS project
+              </p>
+            </div>
+            <div className="p-5 overflow-x-auto">
+              <table className="w-full text-left border-collapse text-[13px] whitespace-nowrap">
+                <thead>
+                  <tr style={{ color: "var(--mex-text-muted)", borderBottom: "1px solid var(--mex-border)" }}>
+                    <th className="pb-3 pr-4 font-normal">Scenario</th>
+                    <th className="pb-3 pr-4 font-normal text-right">Standard Agent</th>
+                    <th className="pb-3 pr-4 font-normal text-right">With mex Context</th>
+                    <th className="pb-3 font-normal text-right">Token Reduction</th>
+                  </tr>
+                </thead>
+                <tbody style={{ color: "var(--mex-text)" }}>
+                  <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.03)" }}>
+                    <td className="py-3 pr-4">Feature Refactor</td>
+                    <td className="py-3 pr-4 font-mono text-right">~58,000</td>
+                    <td className="py-3 pr-4 font-mono text-right" style={{ color: "var(--mex-primary)" }}>~22,000</td>
+                    <td className="py-3 font-mono text-right text-emerald-400">62%</td>
+                  </tr>
+                  <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.03)" }}>
+                    <td className="py-3 pr-4">Complex Bug Fix</td>
+                    <td className="py-3 pr-4 font-mono text-right">~32,000</td>
+                    <td className="py-3 pr-4 font-mono text-right" style={{ color: "var(--mex-primary)" }}>~14,000</td>
+                    <td className="py-3 font-mono text-right text-emerald-400">56%</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 pr-4">Database Migration</td>
+                    <td className="py-3 pr-4 font-mono text-right">~45,000</td>
+                    <td className="py-3 pr-4 font-mono text-right" style={{ color: "var(--mex-primary)" }}>~14,400</td>
+                    <td className="py-3 font-mono text-right text-emerald-400">68%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-          <div className="p-5 overflow-x-auto">
-            <table className="w-full text-left border-collapse text-[13px] whitespace-nowrap">
-              <thead>
-                <tr style={{ color: "var(--mex-text-muted)", borderBottom: "1px solid var(--mex-border)" }}>
-                  <th className="pb-3 pr-4 font-normal">Scenario</th>
-                  <th className="pb-3 pr-4 font-normal text-right">Standard Agent</th>
-                  <th className="pb-3 pr-4 font-normal text-right">With mex Context</th>
-                  <th className="pb-3 font-normal text-right">Token Reduction</th>
-                </tr>
-              </thead>
-              <tbody style={{ color: "var(--mex-text)" }}>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.03)" }}>
-                  <td className="py-3 pr-4">Feature Refactor</td>
-                  <td className="py-3 pr-4 font-mono text-right">~58,000</td>
-                  <td className="py-3 pr-4 font-mono text-right" style={{ color: "var(--mex-primary)" }}>~22,000</td>
-                  <td className="py-3 font-mono text-right text-emerald-400">62%</td>
-                </tr>
-                <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.03)" }}>
-                  <td className="py-3 pr-4">Complex Bug Fix</td>
-                  <td className="py-3 pr-4 font-mono text-right">~32,000</td>
-                  <td className="py-3 pr-4 font-mono text-right" style={{ color: "var(--mex-primary)" }}>~14,000</td>
-                  <td className="py-3 font-mono text-right text-emerald-400">56%</td>
-                </tr>
-                <tr>
-                  <td className="py-3 pr-4">Database Migration</td>
-                  <td className="py-3 pr-4 font-mono text-right">~45,000</td>
-                  <td className="py-3 pr-4 font-mono text-right" style={{ color: "var(--mex-primary)" }}>~14,400</td>
-                  <td className="py-3 font-mono text-right text-emerald-400">68%</td>
-                </tr>
-              </tbody>
-            </table>
+
+          {/* Community Benchmark — OpenClaw */}
+          <div 
+            className="rounded-xl overflow-hidden"
+            style={{
+              background: "var(--mex-bg-3)",
+              border: "1px solid var(--mex-border)",
+            }}
+          >
+            <div className="px-5 py-3.5 flex items-center justify-between gap-4 flex-wrap" style={{ borderBottom: "1px solid var(--mex-border)" }}>
+              <p className="text-[14px] font-medium" style={{ color: "var(--mex-text)" }}>
+                Community Benchmark — OpenClaw <span className="text-[12px] font-normal ml-2 px-2 py-0.5 rounded-full border border-emerald-500/30 text-emerald-400 bg-emerald-500/10">independent</span>
+              </p>
+            </div>
+            <div className="p-5 overflow-x-auto">
+              <table className="w-full text-left border-collapse text-[13px] whitespace-nowrap">
+                <thead>
+                  <tr style={{ color: "var(--mex-text-muted)", borderBottom: "1px solid var(--mex-border)" }}>
+                    <th className="pb-3 pr-4 font-normal">Scenario</th>
+                    <th className="pb-3 pr-4 font-normal text-right">Before mex</th>
+                    <th className="pb-3 pr-4 font-normal text-right">With mex</th>
+                    <th className="pb-3 font-normal text-right">Savings</th>
+                  </tr>
+                </thead>
+                <tbody style={{ color: "var(--mex-text)" }}>
+                  <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.03)" }}>
+                    <td className="py-3 pr-4">&quot;How does K8s work?&quot;</td>
+                    <td className="py-3 pr-4 font-mono text-right">~3,300</td>
+                    <td className="py-3 pr-4 font-mono text-right" style={{ color: "var(--mex-primary)" }}>~1,450</td>
+                    <td className="py-3 font-mono text-right text-emerald-400">56%</td>
+                  </tr>
+                  <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.03)" }}>
+                    <td className="py-3 pr-4">&quot;Open UFW port&quot;</td>
+                    <td className="py-3 pr-4 font-mono text-right">~3,300</td>
+                    <td className="py-3 pr-4 font-mono text-right" style={{ color: "var(--mex-primary)" }}>~1,050</td>
+                    <td className="py-3 font-mono text-right text-emerald-400">68%</td>
+                  </tr>
+                  <tr style={{ borderBottom: "1px solid rgba(255,255,255,0.03)" }}>
+                    <td className="py-3 pr-4">&quot;Explain Docker&quot;</td>
+                    <td className="py-3 pr-4 font-mono text-right">~3,300</td>
+                    <td className="py-3 pr-4 font-mono text-right" style={{ color: "var(--mex-primary)" }}>~1,100</td>
+                    <td className="py-3 font-mono text-right text-emerald-400">67%</td>
+                  </tr>
+                  <tr>
+                    <td className="py-3 pr-4">Multi-context query</td>
+                    <td className="py-3 pr-4 font-mono text-right">~3,300</td>
+                    <td className="py-3 pr-4 font-mono text-right" style={{ color: "var(--mex-primary)" }}>~1,650</td>
+                    <td className="py-3 font-mono text-right text-emerald-400">50%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div className="px-5 pb-4">
+              <p className="text-[12px] leading-relaxed" style={{ color: "var(--mex-text-muted)" }}>
+                Independently tested by a community member on OpenClaw across 10 structured scenarios. 10/10 passed, drift score 100/100. Ubuntu 24.04 homelab.
+              </p>
+            </div>
           </div>
         </motion.div>
       </div>
