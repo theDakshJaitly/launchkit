@@ -257,11 +257,20 @@ export function Templates() {
                                 </div>
 
                                 {/* Get button */}
-                                <a href="/waitlist" className="mt-auto">
-                                    <button className="w-full py-2.5 rounded-xl bg-white text-black text-[13px] font-medium hover:bg-zinc-200 transition-all duration-200 cursor-pointer">
-                                        Get template →
+                                {template.name === "General SaaS" ? (
+                                    <a href="/templates/general-saas" className="mt-auto">
+                                        <button className="w-full py-2.5 rounded-xl bg-white text-black text-[13px] font-medium hover:bg-zinc-200 transition-all duration-200 cursor-pointer">
+                                            Get Now →
+                                        </button>
+                                    </a>
+                                ) : (
+                                    <button
+                                        disabled
+                                        className="w-full py-2.5 rounded-xl bg-white/[0.04] border border-white/[0.06] text-[13px] text-zinc-600 font-medium cursor-not-allowed mt-auto"
+                                    >
+                                        Coming Soon
                                     </button>
-                                </a>
+                                )}
                             </>
                         );
 
@@ -357,9 +366,9 @@ export function Templates() {
                                 <span className="text-[40px] font-semibold text-emerald-400">${bundlePrice}</span>
                                 <span className="text-zinc-500 text-[14px]">/lifetime</span>
                             </div>
-                            <a href="/waitlist">
+                            <a href="/templates/general-saas">
                                 <button className="bg-white text-black font-medium text-[15px] px-8 py-3 rounded-full hover:bg-zinc-200 transition-colors duration-200 cursor-pointer whitespace-nowrap">
-                                    Get early access →
+                                    Get the bundle →
                                 </button>
                             </a>
                             <p className="text-[12px] text-zinc-600">{spotsLeft !== null ? spotsLeft : "–"} spots left</p>

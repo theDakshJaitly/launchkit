@@ -60,9 +60,9 @@ export function Pricing() {
               ))}
             </ul>
 
-            <a href="/waitlist" className="block">
+            <a href="#templates" className="block">
               <button className="w-full py-3 rounded-xl bg-white/[0.06] border border-white/[0.08] text-[14px] text-zinc-300 font-medium hover:bg-white/[0.1] hover:border-white/[0.15] hover:text-white transition-all duration-200">
-                Join waitlist
+                Browse templates
               </button>
             </a>
           </motion.div>
@@ -109,9 +109,9 @@ export function Pricing() {
               ))}
             </ul>
 
-            <a href="/waitlist" className="block">
+            <a href="/templates/general-saas" className="block">
               <button className="w-full py-3 rounded-xl bg-white text-black text-[14px] font-medium hover:bg-zinc-200 transition-all duration-200">
-                Get early access
+                Get the bundle
               </button>
             </a>
           </motion.div>
