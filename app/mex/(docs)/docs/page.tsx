@@ -32,7 +32,7 @@ export default function DocsPage() {
                 <ul className="space-y-3 ms-6 list-disc marker:text-[var(--mex-border)]" style={{ color: "var(--mex-text-muted)" }}>
                   <li><strong style={{ color: "var(--mex-text)" }}>Node.js (v20 or later)</strong> — required for the CLI engine (drift detection, sync, scanner)</li>
                   <li><strong style={{ color: "var(--mex-text)" }}>Git</strong> — recommended for staleness detection</li>
-                  <li><strong style={{ color: "var(--mex-text)" }}>An AI coding tool</strong> — Claude Code, Cursor, Windsurf, or GitHub Copilot. mex generates context files that these tools read automatically</li>
+                  <li><strong style={{ color: "var(--mex-text)" }}>An AI coding tool</strong> — Claude Code, Cursor, Windsurf, GitHub Copilot, OpenCode, or Codex. mex generates context files that these tools read automatically</li>
                 </ul>
               </div>
 
@@ -1329,7 +1329,7 @@ export default function DocsPage() {
                   <p className="text-[14px] text-[#a1a1aa] mb-4 ml-2 leading-relaxed">
                     Asks which AI tool you use and copies the appropriate config file to your project root. Supports selecting multiple tools at once. Config files are identical — they all point the agent to <code className="font-mono text-white text-[12px]">.mex/ROUTER.md</code>. If a config file already exists, it asks before overwriting.
                   </p>
-                  <div className="ml-2 grid grid-cols-2 sm:grid-cols-4 gap-3">
+                  <div className="ml-2 grid grid-cols-2 sm:grid-cols-3 gap-3">
                     <div className="bg-[#111116] border border-[#333] rounded px-4 py-3 text-center">
                       <div className="text-[13px] text-white font-medium mb-1">Claude Code</div>
                       <code className="text-[11px] font-mono text-[#a1a1aa]">CLAUDE.md</code>
@@ -1345,6 +1345,14 @@ export default function DocsPage() {
                     <div className="bg-[#111116] border border-[#333] rounded px-4 py-3 text-center">
                       <div className="text-[13px] text-white font-medium mb-1">GitHub Copilot</div>
                       <code className="text-[10px] sm:text-[11px] font-mono text-[#a1a1aa] break-all">.github/copilot-instructions.md</code>
+                    </div>
+                    <div className="bg-[#111116] border border-[#333] rounded px-4 py-3 text-center">
+                      <div className="text-[13px] text-white font-medium mb-1">OpenCode</div>
+                      <code className="text-[10px] sm:text-[11px] font-mono text-[#a1a1aa] break-all">.opencode/opencode.json</code>
+                    </div>
+                    <div className="bg-[#111116] border border-[#333] rounded px-4 py-3 text-center">
+                      <div className="text-[13px] text-white font-medium mb-1">Codex (OpenAI)</div>
+                      <code className="text-[11px] font-mono text-[#a1a1aa]">AGENTS.md</code>
                     </div>
                   </div>
                 </div>
@@ -1598,6 +1606,16 @@ export default function DocsPage() {
                       <td className="px-6 py-4 font-mono text-[13px] text-zinc-300">copilot-instructions.md</td>
                       <td className="px-6 py-4 text-[#a1a1aa]"><code className="font-mono text-white text-[11px] bg-[#000] px-1 rounded border border-[#333]">.github/</code> directory in project root</td>
                     </tr>
+                    <tr className="hover:bg-[#1a1a1c]/70 transition-colors">
+                      <td className="px-6 py-4 text-white font-medium flex items-center gap-2">OpenCode</td>
+                      <td className="px-6 py-4 font-mono text-[13px] text-amber-400">opencode.json</td>
+                      <td className="px-6 py-4 text-[#a1a1aa]"><code className="font-mono text-white text-[11px] bg-[#000] px-1 rounded border border-[#333]">.opencode/</code> directory in project root</td>
+                    </tr>
+                    <tr className="hover:bg-[#1a1a1c]/70 transition-colors">
+                      <td className="px-6 py-4 text-white font-medium flex items-center gap-2">Codex (OpenAI)</td>
+                      <td className="px-6 py-4 font-mono text-[13px] text-cyan-400">AGENTS.md</td>
+                      <td className="px-6 py-4 text-[#a1a1aa]">Project root (Codex reads natively)</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
@@ -1625,14 +1643,16 @@ export default function DocsPage() {
                   <div className="pl-4 text-[#a1a1aa] hover:text-white transition-colors cursor-crosshair">2) Cursor</div>
                   <div className="pl-4 text-[#a1a1aa] hover:text-white transition-colors cursor-crosshair">3) Windsurf</div>
                   <div className="pl-4 text-[#a1a1aa] hover:text-white transition-colors cursor-crosshair">4) GitHub Copilot</div>
-                  <div className="pl-4 text-emerald-400 hover:text-emerald-300 transition-colors cursor-crosshair flex items-center gap-2">5) Multiple (select next) <span className="text-[#555] text-[10px]">◄ selected</span></div>
-                  <div className="pl-4 text-[#a1a1aa] hover:text-white transition-colors cursor-crosshair">6) None / other (skip)</div>
+                  <div className="pl-4 text-[#a1a1aa] hover:text-white transition-colors cursor-crosshair">5) OpenCode</div>
+                  <div className="pl-4 text-[#a1a1aa] hover:text-white transition-colors cursor-crosshair">6) Codex (OpenAI)</div>
+                  <div className="pl-4 text-emerald-400 hover:text-emerald-300 transition-colors cursor-crosshair flex items-center gap-2">7) Multiple (select next) <span className="text-[#555] text-[10px]">◄ selected</span></div>
+                  <div className="pl-4 text-[#a1a1aa] hover:text-white transition-colors cursor-crosshair">8) None / other (skip)</div>
                 </div>
               </div>
 
               <div className="bg-[#111116] border border-[#27272a] rounded-xl p-5">
                 <p className="text-[14px] leading-relaxed text-[#a1a1aa]">
-                  Selecting option 5 lets you enter multiple tool numbers (e.g., <code className="text-white">1 2 4</code> for Claude Code + Cursor + Copilot). The script copies the correct config file for each selection to the right location. If a config file already exists at the destination, it asks before overwriting.
+                  Selecting option 7 lets you enter multiple tool numbers (e.g., <code className="text-white">1 2 5</code> for Claude Code + Cursor + OpenCode). The script copies the correct config file for each selection to the right location. If a config file already exists at the destination, it asks before overwriting.
                 </p>
               </div>
             </div>
@@ -1663,6 +1683,16 @@ export default function DocsPage() {
                 <div className="bg-[#09090b] border border-[#27272a] rounded-xl p-5 hover:border-zinc-300/30 transition-colors group">
                   <div className="text-[12px] font-space font-medium text-zinc-300 mb-2">GitHub Copilot</div>
                   <code className="text-[11px] font-mono text-[#a1a1aa] break-all group-hover:text-white transition-colors">mkdir -p .github && cp .mex/.tool-configs/copilot-instructions.md ./.github/copilot-instructions.md</code>
+                </div>
+
+                <div className="bg-[#09090b] border border-[#27272a] rounded-xl p-5 hover:border-amber-500/30 transition-colors group">
+                  <div className="text-[12px] font-space font-medium text-amber-500 mb-2">OpenCode</div>
+                  <code className="text-[11px] font-mono text-[#a1a1aa] break-all group-hover:text-white transition-colors">mkdir -p .opencode && cp .mex/.tool-configs/opencode.json ./.opencode/opencode.json</code>
+                </div>
+
+                <div className="bg-[#09090b] border border-[#27272a] rounded-xl p-5 hover:border-cyan-500/30 transition-colors group">
+                  <div className="text-[12px] font-space font-medium text-cyan-500 mb-2">Codex (OpenAI)</div>
+                  <code className="text-[11px] font-mono text-[#a1a1aa] break-all group-hover:text-white transition-colors">cp .mex/.tool-configs/CLAUDE.md ./AGENTS.md</code>
                 </div>
               </div>
             </div>

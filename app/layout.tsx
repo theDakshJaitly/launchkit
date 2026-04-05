@@ -7,6 +7,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://launchx.page"),
+  alternates: {
+    canonical: "/",
+  },
   title: "LaunchX — Ship Your Next.js App This Weekend",
   description:
     "Production-ready Next.js templates with AI rules baked in. Auth, payments, database — configured in 5 minutes. 80% fewer tokens wasted.",
