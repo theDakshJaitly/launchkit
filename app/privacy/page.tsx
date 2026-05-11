@@ -45,8 +45,8 @@ export default function PrivacyPage() {
             <h2 className="text-white font-medium text-lg mb-3">5. Contact</h2>
             <p>
               For privacy inquiries or to exercise your rights, please contact us at:{" "}
-              <a href="mailto:thedakshjaitly@gmail.com" className="text-white underline underline-offset-4 hover:text-zinc-300 transition-colors">
-                thedakshjaitly@gmail.com
+              <a href="mailto:launchxofficial@gmail.com" className="text-white underline underline-offset-4 hover:text-zinc-300 transition-colors">
+                launchxofficial@gmail.com
               </a>
             </p>
           </section>
