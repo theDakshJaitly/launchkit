@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import { CheckoutCard } from "./CheckoutCard";
 import { ImageCarousel } from "./ImageCarousel";
+import { LaunchpadCarousel } from "./LaunchpadCarousel";
 import { StickyBottomBar } from "./StickyBottomBar";
 import { Accordion } from "@/components/ui/Accordion";
 import {
@@ -120,36 +121,52 @@ const buildWith = [
 const faqItems = [
   {
     question: "How do I get access after purchase?",
-    answer: "After payment, we'll invite your GitHub username to our private template repository. You'll receive a GitHub notification and email — just accept the invite, clone the repo, and start building.",
+    answer: "After payment, we'll invite your GitHub username to the private template repository and send you a link to duplicate the Notion workspace to your account. You'll receive a notification and email with everything you need to get started.",
   },
   {
     question: "Do I get lifetime updates?",
-    answer: "Yes. Once you have access to the repo, you can pull updates at any time. We continuously improve the template with framework updates, new features, and bug fixes.",
+    answer: "Yes. GitHub template updates are available via git pulls anytime. Notion template updates are pushed to your workspace automatically. We continuously improve both templates with new features and improvements.",
   },
   {
-    question: "Can I use it for commercial projects?",
-    answer: "Absolutely. Your license covers unlimited personal and commercial projects. Build and deploy as many apps as you want. The only restriction is you can't resell or redistribute the template source code itself.",
+    question: "Can I share these with my team?",
+    answer: "Absolutely. The GitHub repo can be cloned and shared with team members directly. The Notion workspace can be shared with collaborators right from Notion. Both work great for teams and co-founders.",
+  },
+  {
+    question: "Can I use these for commercial projects?",
+    answer: "Yes. Both templates include a commercial license for unlimited personal and commercial projects. Build as many apps as you want and keep all the revenue. The only restriction is you can't resell or redistribute the template source code itself.",
+  },
+  {
+    question: "What if I add both templates?",
+    answer: "You get the complete SaaS starter kit ($149) plus the LaunchPad OS Notion workspace ($14.99). They're designed to work together — use the template to build your product and manage everything in the Notion workspace.",
   },
   {
     question: "What if I need help?",
-    answer: "Reach out to us at thedakshjaitly@gmail.com. We're happy to help with setup questions, configuration issues, or general guidance on getting the most out of the template.",
+    answer: "Reach out to us at launchxofficial@gmail.com. We're happy to help with setup questions, customization, technical issues, or general guidance on getting the most out of either template.",
   },
   {
     question: "What's the refund policy?",
-    answer: "Since this is a digital product with immediate access to source code, all sales are final. However, if you experience a technical issue that prevents you from using the template, contact us within 14 days and we'll work to resolve it or provide a refund at our discretion.",
+    answer: "Since these are digital products with immediate access, all sales are final. However, if you experience a technical issue that prevents you from using the templates, contact us within 14 days and we'll work to resolve it or provide a refund at our discretion.",
   },
 ];
 
 export function GeneralSaasPage() {
   const formRef = useRef<HTMLDivElement>(null);
 
+  const handleAddLaunchpadOS = () => {
+    if (formRef.current) {
+      formRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    window.dispatchEvent(new CustomEvent("launchpad:add"));
+  };
+
   return (
     <main className="bg-black text-white min-h-screen">
       <StickyBottomBar targetRef={formRef} />
 
       <div className="relative max-w-7xl mx-auto px-6 md:px-12 lg:px-20 xl:pr-[440px] py-16 md:py-24">
+        <div id="checkout-card-anchor" />
         {/* Desktop sticky checkout card — fixed position on viewport */}
-        <div className="hidden xl:block fixed top-8 right-[calc((100vw-80rem)/2+2rem)] w-[320px] z-40">
+        <div className="hidden xl:block fixed top-4 right-[calc((100vw-80rem)/2+2rem)] w-[320px] z-40">
           <CheckoutCard />
         </div>
 
@@ -159,13 +176,22 @@ export function GeneralSaasPage() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease }}
         >
-          <a
-            href="/"
-            className="inline-flex items-center gap-2 text-zinc-500 text-[13px] hover:text-zinc-300 transition-colors mb-8"
-          >
-            <ArrowRight className="w-3 h-3 rotate-180" />
-            Back to LaunchX
-          </a>
+          <div className="flex items-center justify-between mb-8">
+            <a
+              href="/"
+              className="inline-flex items-center gap-2 text-zinc-500 text-[13px] hover:text-zinc-300 transition-colors"
+            >
+              <ArrowRight className="w-3 h-3 rotate-180" />
+              Back to LaunchX
+            </a>
+            <a
+              href="/docs"
+              className="inline-flex items-center gap-2.5 text-[13px] font-semibold uppercase tracking-wider text-zinc-200 border border-white/10 bg-white/5 px-4 py-2 rounded-full hover:bg-white/10 transition-colors mr-2"
+            >
+              Docs
+              <ArrowRight className="w-3 h-3" />
+            </a>
+          </div>
 
           <h1 className="text-heading mb-4">LaunchX SaaS Starter</h1>
           <p className="text-zinc-400 text-[16px] leading-relaxed max-w-2xl mb-6">
@@ -179,13 +205,6 @@ export function GeneralSaasPage() {
             <span className="text-zinc-500 text-[14px]">/lifetime</span>
           </div>
 
-          <a
-            href="/docs"
-            className="inline-flex items-center gap-1.5 text-[13px] text-emerald-400 hover:text-emerald-300 transition-colors mb-8"
-          >
-            <ArrowRight className="w-3 h-3" />
-            Read the documentation
-          </a>
         </motion.div>
 
         {/* Mobile checkout card — inline */}
@@ -469,6 +488,106 @@ export function GeneralSaasPage() {
           </div>
         </section>
 
+        {/* ── LaunchPad OS Bonus ── */}
+        <section id="launchpad-os" className="mb-24">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease }}
+            className="mb-6"
+          >
+            <div className="flex items-center gap-2 text-emerald-400 text-[12px] font-semibold uppercase tracking-wider mb-3">
+              <span>Bonus:</span>
+              <span>LaunchPad OS — Indie Founder Workspace</span>
+            </div>
+
+            <h2 className="text-section mb-4">The all-in-one Notion workspace for indie founders</h2>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease }}
+            className="rounded-2xl border border-white/[0.06] bg-white/[0.02] p-8 md:p-10"
+          >
+            <p className="text-zinc-400 text-[15px] max-w-3xl mb-4">
+              LaunchPad OS solves the "too many tools" problem by consolidating tasks, CRM, MRR, content,
+              and internal docs into one connected workspace. Instead of bouncing between apps, you get a
+              single source of truth for what to build, who you are talking to, and how the business is
+              performing.
+            </p>
+            <p className="text-zinc-400 text-[15px] max-w-3xl mb-6">
+              The template is purpose-built for indie founders and early-stage teams who need clarity and
+              momentum. It is pre-filled with sample data, workflows, and dashboards so you can start
+              working immediately and evolve the system as your company grows.
+            </p>
+
+            <div className="text-[12px] text-zinc-500 mb-6">
+              Also available on the Notion marketplace.
+            </div>
+
+            <div className="mb-10">
+              <LaunchpadCarousel />
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-4 mb-8">
+              {[
+                { title: "Build", subtitle: "Ship fast. Log every session." },
+                { title: "Growth", subtitle: "Post. Track. Double down." },
+                { title: "Users", subtitle: "Know them. Log everything." },
+                { title: "Money", subtitle: "MRR. Burn. Net Revenue." },
+                { title: "Strategy", subtitle: "OKRs. Decisions. Direction." },
+                { title: "Ops", subtitle: "Stack. SOPs. Knowledge." },
+              ].map((item) => (
+                <div
+                  key={item.title}
+                  className="rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3"
+                >
+                  <div className="text-[13px] font-semibold text-white">{item.title}</div>
+                  <div className="text-[12px] text-zinc-500">{item.subtitle}</div>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap gap-2 mb-6">
+              {[
+                "Project & task management",
+                "CRM pipeline",
+                "MRR & revenue tracking",
+                "Content pipeline",
+                "OKR planning",
+                "Daily ops dashboard",
+                "Founder dashboard",
+              ].map((item) => (
+                <span
+                  key={item}
+                  className="rounded-full border border-white/[0.08] bg-white/[0.02] px-3 py-1 text-[12px] text-zinc-400"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+
+            <p className="text-zinc-500 text-[13px] mb-6">
+              18 pages across 7 sections. Pre-filled with sample data. One-time purchase. Instant access via Notion.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-4">
+              <button
+                type="button"
+                onClick={handleAddLaunchpadOS}
+                className="inline-flex items-center gap-2 text-emerald-400 text-[14px] font-medium hover:text-emerald-300 transition-colors"
+              >
+                $14.99 — Add it to your order
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+              <span className="text-[12px] text-zinc-500">$14.99 one-time</span>
+            </div>
+          </motion.div>
+        </section>
+
         {/* ── FAQ ── */}
         <section className="mb-24">
           <motion.div
@@ -490,41 +609,6 @@ export function GeneralSaasPage() {
             <Accordion items={faqItems} />
           </motion.div>
         </section>
-
-        {/* ── Bottom CTA ── */}
-        <motion.section
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, ease }}
-          className="text-center py-12 border-t border-white/[0.06]"
-        >
-          <h2 className="text-[24px] font-medium text-white mb-3">Ready to ship?</h2>
-          <p className="text-zinc-500 text-[15px] mb-6">
-            Stop rebuilding auth and payments. Start building your product.
-          </p>
-          <div className="flex items-baseline justify-center gap-2 mb-6">
-            <span className="text-zinc-600 line-through text-[18px]">$300</span>
-            <span className="text-[36px] font-semibold text-emerald-400">$149</span>
-            <span className="text-zinc-500 text-[14px]">/lifetime</span>
-          </div>
-          <button
-            onClick={() => formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" })}
-            className="xl:hidden px-8 py-3 rounded-xl bg-emerald-500 text-black text-[14px] font-semibold hover:bg-emerald-400 transition-colors duration-200 cursor-pointer"
-          >
-            Buy Now
-          </button>
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
-            className="hidden xl:inline-block px-8 py-3 rounded-xl bg-emerald-500 text-black text-[14px] font-semibold hover:bg-emerald-400 transition-colors duration-200 cursor-pointer"
-          >
-            Buy Now
-          </a>
-        </motion.section>
       </div>
     </main>
   );

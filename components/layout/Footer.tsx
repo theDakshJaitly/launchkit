@@ -27,7 +27,7 @@ export function Footer() {
             EULA
           </a>
           <a
-            href="mailto:thedakshjaitly@gmail.com"
+            href="mailto:launchxofficial@gmail.com"
             className="text-[13px] text-zinc-600 hover:text-zinc-300 transition-colors duration-200"
           >
             Contact
