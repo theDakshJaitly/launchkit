@@ -22,6 +22,8 @@ export async function createPayment(data: {
     }
 
     try {
+        const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || "https://launchx.page";
+
         const response = await getDodo().checkoutSessions.create({
             customer: {
                 email: result.data.email,
@@ -36,7 +38,7 @@ export async function createPayment(data: {
                     quantity: 1,
                 },
             ],
-            return_url: "https://launchx.page/templates/general-saas?payment=success",
+            return_url: `${baseUrl}/templates/general-saas?payment=success`,
             customization: {
                 theme: "dark",
             },

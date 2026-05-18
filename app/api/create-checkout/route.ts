@@ -22,6 +22,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing DODO_LAUNCHPAD_OS_PRODUCT_ID." }, { status: 500 });
     }
 
+    const requestUrl = new URL(request.url);
+    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || requestUrl.origin;
+    const returnUrl = `${baseUrl}/templates/general-saas?payment=success`;
+
     const dodo = new DodoPayments({
       bearerToken: process.env.DODO_PAYMENTS_API_KEY,
       environment: (process.env.DODO_PAYMENTS_ENV as "live_mode" | "test_mode") || "test_mode",
@@ -40,13 +44,6 @@ export async function POST(request: Request) {
         quantity: 1,
       });
     }
-
-    // Build a return URL that works in local dev and on Vercel / production.
-    // Priority: explicit env `NEXT_PUBLIC_SITE_URL` -> VERCEL_URL (auto-set on Vercel) -> localhost
-    const baseUrl =
-      process.env.NEXT_PUBLIC_SITE_URL ||
-      (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000");
-    const returnUrl = `${baseUrl}/templates/general-saas?payment=success`;
 
     const response = await dodo.checkoutSessions.create({
       customer: {
