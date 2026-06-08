@@ -24,7 +24,7 @@ export async function POST(request: Request) {
 
     const requestUrl = new URL(request.url);
     const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || requestUrl.origin;
-    const returnUrl = `${baseUrl}/templates/general-saas?payment=success`;
+    const returnUrl = `${baseUrl}/success`;
 
     const dodo = new DodoPayments({
       bearerToken: process.env.DODO_PAYMENTS_API_KEY,
@@ -52,6 +52,7 @@ export async function POST(request: Request) {
       },
       metadata: {
         github_username: github,
+        has_notion: addLaunchpadOS ? "true" : "false",
       },
       product_cart: productCart,
       return_url: returnUrl,

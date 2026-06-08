@@ -57,11 +57,12 @@ export async function POST(request: NextRequest) {
     switch (payload.type) {
         case "payment.succeeded": {
             const githubUsername = payload.data?.metadata?.github_username;
+            const hasNotion = payload.data?.metadata?.has_notion === "true";
             const customerEmail = payload.data?.customer?.email;
             const customerName = payload.data?.customer?.name;
             const paymentId = payload.data?.payment_id;
 
-            console.log("Payment succeeded:", paymentId, "GitHub:", githubUsername, "Email:", customerEmail);
+            console.log("Payment succeeded:", paymentId, "GitHub:", githubUsername, "hasNotion:", hasNotion, "Email:", customerEmail);
 
             const resend = getResend();
 
@@ -69,7 +70,7 @@ export async function POST(request: NextRequest) {
             await resend.emails.send({
                 from: "LaunchX <hello@launchx.page>",
                 to: "thedakshjaitly@gmail.com",
-                subject: `New Sale: ${customerName || "Unknown"} — ${githubUsername || "no username"}`,
+                subject: `New Sale: ${customerName || "Unknown"} — ${githubUsername || "no username"}${hasNotion ? " + Notion" : ""}`,
                 html: `
                 <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #000000; padding: 40px 20px;">
                     <div style="max-width: 500px; margin: 0 auto; background-color: #09090b; border: 1px solid #27272a; border-radius: 12px; overflow: hidden;">
@@ -77,7 +78,7 @@ export async function POST(request: NextRequest) {
                             <span style="color: #22c55e; font-family: monospace; font-size: 13px;">New Sale</span>
                         </div>
                         <div style="padding: 32px;">
-                            <p style="color: #ffffff; font-size: 18px; font-weight: 600; margin: 0 0 24px 0;">General SaaS Template</p>
+                            <p style="color: #ffffff; font-size: 18px; font-weight: 600; margin: 0 0 24px 0;">General SaaS Template${hasNotion ? " + LaunchPad OS" : ""}</p>
                             <table style="width: 100%; border-collapse: collapse;">
                                 <tr>
                                     <td style="color: #71717a; font-size: 13px; padding: 8px 0; border-bottom: 1px solid #27272a;">Name</td>
@@ -147,6 +148,7 @@ export async function POST(request: NextRequest) {
                                                 Open the <strong style="color: #ffffff;">Dodo customer dashboard</strong> link in the email sent by Dodo Payments and connect your GitHub to Dodo. Once connected, the repo invite will arrive in your GitHub inbox.
                                             </td>
                                         </tr>
+                                        ${hasNotion ? `
                                         <tr>
                                             <td style="color: #22c55e; font-size: 13px; padding: 4px 8px 4px 0; vertical-align: top;">2.</td>
                                             <td style="color: #a1a1aa; font-size: 13px; padding: 4px 0; line-height: 1.5;">
@@ -160,6 +162,14 @@ export async function POST(request: NextRequest) {
                                                 After you accept the GitHub invite and duplicate the Notion template, you are ready to start building. Clone the repo and use the Notion workspace to manage tasks, customers, and docs.
                                             </td>
                                         </tr>
+                                        ` : `
+                                        <tr>
+                                            <td style="color: #22c55e; font-size: 13px; padding: 4px 8px 4px 0; vertical-align: top;">2.</td>
+                                            <td style="color: #a1a1aa; font-size: 13px; padding: 4px 0; line-height: 1.5;">
+                                                After you accept the GitHub invite, clone the repo and start building. Reach out if you need any help getting started.
+                                            </td>
+                                        </tr>
+                                        `}
                                     </table>
                                 </div>
 
@@ -185,7 +195,7 @@ export async function POST(request: NextRequest) {
             console.log("Payment failed:", payload.data?.payment_id);
             break;
         default:
-            console.log("Unhandled webhook event:", payload.event_type);
+            console.log("Unhandled webhook event:", payload.type);
     }
 
     return NextResponse.json({ received: true }, { status: 200 });

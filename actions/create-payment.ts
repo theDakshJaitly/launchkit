@@ -38,7 +38,7 @@ export async function createPayment(data: {
                     quantity: 1,
                 },
             ],
-            return_url: `${baseUrl}/templates/general-saas?payment=success`,
+            return_url: `${baseUrl}/success`,
             customization: {
                 theme: "dark",
             },
